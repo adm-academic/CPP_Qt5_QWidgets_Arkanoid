@@ -1,0 +1,79 @@
+QT       += core gui multimedia
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+CONFIG += c++17
+
+CONFIG += console
+
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+SOURCES += \
+    ball.cpp \
+    block.cpp \
+    device_background.cpp \
+    device_prizes_list.cpp \
+    elementar_moving_algebra.cpp \
+    gameframe.cpp \
+    gamestate.cpp \
+    global_forms.cpp \
+    global_widgets.cpp \
+    main.cpp \
+    platform.cpp \
+    prize.cpp \
+    prize_catch.cpp \
+    prize_expand.cpp \
+    prize_life.cpp \
+    sceneloader.cpp \
+    settings.cpp \
+    wabout.cpp \
+    wlanguage.cpp \
+    wmain.cpp \
+    wsettings.cpp
+
+HEADERS += \
+    ball.h \
+    block.h \
+    device_background.h \
+    device_prizes_list.h \
+    elementar_moving_algebra.h \
+    gameframe.h \
+    gamestate.h \
+    global_forms.h \
+    global_widgets.h \
+    platform.h \
+    prize.h \
+    prize_catch.h \
+    prize_expand.h \
+    prize_life.h \
+    sceneloader.h \
+    settings.h \
+    wabout.h \
+    wlanguage.h \
+    wmain.h \
+    wsettings.h
+
+FORMS += \
+    wabout.ui \
+    wlanguage.ui \
+    wmain.ui \
+    wsettings.ui
+
+TRANSLATIONS += \
+    CPP_Qt5_QWidgets_Arkanoid_ru_RU.ts
+CONFIG += lrelease
+CONFIG += embed_translations
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    TODO.txt \
+    settings.conf
+
+RESOURCES += \
+    resources.qrc

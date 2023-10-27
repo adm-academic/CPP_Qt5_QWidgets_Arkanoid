@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WLanguage</class>
+ <widget class="QDialog" name="WLanguage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>310</width>
+    <height>152</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Please Select Locale</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+	background-color: rgb(0, 0, 0);
+	color :  rgb(2, 250, 3);
+   font-weight: bold;
+};</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="lb_header">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	background-color: rgb(0, 0, 0);
+	color :  rgb(2, 250, 3);
+   font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>Select Locale</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="rb_en_US">
+     <property name="styleSheet">
+      <string notr="true">QRadioButton{
+	background-color: rgb(0, 0, 0);
+	color :  rgb(2, 250, 3);
+   font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>en_US American English</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="rb_ru_RU">
+     <property name="styleSheet">
+      <string notr="true">QRadioButton{
+	background-color: rgb(0, 0, 0);
+	color :  rgb(2, 250, 3);
+   font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>ru_RU Russian Russia</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>WLanguage</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>WLanguage</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
