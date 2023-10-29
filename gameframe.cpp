@@ -24,8 +24,8 @@ GameFrame::GameFrame(QWidget *parent): QFrame{parent}
     this->game_timer.setInterval( 100 ); // установим интервал игрового таймера
 
 
-    ///!!!!!! временное решение
-    this->background_image.load(":/rc/suite/2.jpg");
+    ///!!!!!!!!!!!!!!!!!!!!!!!! временное решение
+    this->background_image.load("levels/0.jpg");
 
 
     connect( &this->game_timer, SIGNAL(timeout()), \

@@ -93,3 +93,10 @@ void WMain::on_tb_InitScene_pressed()
     gamestate->set_lifes(3);
 }
 
+
+void WMain::on_toolButton_pressed()
+{
+    gamestate->get_level_loader()->initialize_loader();
+    gamestate->get_level_loader()->load_level(0);
+}
+

@@ -43,6 +43,8 @@ private slots:
     void on_tb_InitScene_pressed();
 
 
+    void on_toolButton_pressed();
+
 private:
     Ui::WMain *ui;
 };

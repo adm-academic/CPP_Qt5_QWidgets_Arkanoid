@@ -20,6 +20,7 @@ SOURCES += \
     gamestate.cpp \
     global_forms.cpp \
     global_widgets.cpp \
+    level_loader.cpp \
     main.cpp \
     platform.cpp \
     prize.cpp \
@@ -32,7 +33,6 @@ SOURCES += \
     prize_score50.cpp \
     prize_score500.cpp \
     prize_slow.cpp \
-    sceneloader.cpp \
     settings.cpp \
     wabout.cpp \
     wgameover.cpp \
@@ -50,6 +50,7 @@ HEADERS += \
     gamestate.h \
     global_forms.h \
     global_widgets.h \
+    level_loader.h \
     platform.h \
     prize.h \
     prize_catch.h \
@@ -61,7 +62,6 @@ HEADERS += \
     prize_score50.h \
     prize_score500.h \
     prize_slow.h \
-    sceneloader.h \
     settings.h \
     wabout.h \
     wgameover.h \

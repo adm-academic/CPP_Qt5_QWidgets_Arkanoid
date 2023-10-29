@@ -10,6 +10,11 @@ GameState::GameState(QWidget *parent): QFrame{parent}
     this->music_play_gaming();
 }
 
+
+Level_Loader* GameState::get_level_loader(){
+    return &(this->level_loader);
+}
+
 void GameState::set_devices(QLabel* lb_score,   QLabel* lb_high_score,
                  QLabel* lb_level,   QLabel* lb_lifes,
                  Device_Prizes_List* device_prizes_list){
@@ -105,7 +110,7 @@ void GameState::load_game(){
     /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     this->set_score(0);
     this->set_high_score(0);
-    this->set_level(1);
+    this->set_level(0);
     this->set_lifes(3);
 }
 

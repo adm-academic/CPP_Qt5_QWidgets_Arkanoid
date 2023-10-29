@@ -1,15 +1,11 @@
 LevelFileVersion,1,,,,,,,,
-LevelNameEn,Start From Earth,,,,,,,,
-LevelNameRu,Старт с планеты Земля,,,,,,,,
+LevelNameEn,Flying past Saturn,,,,,,,,
+LevelNameRu,Пролетая мимо Сатурна,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
-green,,,,,,,,,green
-blue,green,,,,,,,green,blue
-blue,blue,green,,,,,green,blue,blue
-,blue,blue,green,,,green,blue,blue,
-,,blue,blue,,,blue,blue,,
-,,,blue,,,blue,,,
-,,,,green,green,,,,
-,,,,blue,blue,,,,
-,,,,blue,blue,,,,
+,,,,,,,,,
+yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow
+brown,,brown,,brown,,brown,,brown,
+,gray,,gray,,gray,,gray,,
+,,gray,,gray,,gray,,,

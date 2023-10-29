@@ -1,0 +1,15 @@
+LevelFileVersion,1,,,,,,,,
+LevelNameEn,Start From Earth,,,,,,,,
+LevelNameRu,Старт с планеты Земля,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+green,,,,,,,,,green
+blue,green,,,,,,,green,blue
+blue,blue,green,,,,,green,blue,blue
+,blue,blue,green,,,green,blue,blue,
+,,blue,blue,,,blue,blue,,
+,,,blue,,,blue,,,
+,,,,green,green,,,,
+,,,,blue,blue,,,,
+,,,,blue,blue,,,,
