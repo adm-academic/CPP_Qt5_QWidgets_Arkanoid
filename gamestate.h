@@ -4,8 +4,13 @@
 
 #include <QFrame>
 #include <QLabel>
+#include <QSoundEffect>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/QMediaPlaylist>
+#include <QMap>
 #include "prize.h"
 #include "device_prizes_list.h"
+
 
 
 class GameState : public QFrame
@@ -29,17 +34,35 @@ public:
 
     void set_level(int value);  // устанавливает значение уровня
     void add_level(int value); // добавляет значение к уровню
-    void increment_level();  // приащивает значение уровня на единицу
+    void increment_level();  // приращивает значение уровня на единицу
+    void decrement_level();  // уменьшает значение уровня на единицу
     int  get_level();  // возвращает значение уровня
 
     void set_lifes(int value);  // устанавливает количество жизней
     void add_lifes(int value);  // добаляет значение к количеству жизней
     int  get_lifes();  // возвращает количество жизней
+    void decrement_lifes(); // уменьшает количество жизней
 
     void add_prize(Prize* prize);  // добавляет приз на экран прибора призов
 
-    void load_scene_state(); /// !!!!!!!!!!!!!!!!!! загружает состояние сцены арканоида
-    void unload_scene_state(); /// !!!!!!!!!!!!!!!!! выгружает состояние сцены арканоида
+    void game_over(); // нужно вызывать при завершении игры!
+
+    void load_game(); /// !!!!!!!!!!!!!!!!!! загружает состояние сцены арканоида
+    void unload_game(); /// !!!!!!!!!!!!!!!!! выгружает состояние сцены арканоида
+
+    //------------------------------------------------------------------
+    // все методы для проигрывания звуков вынесены в одно место
+    void music_play_gaming();
+    void music_play_idle();
+    void sound_play_ball_lost();
+    void sound_play_ball_with_block();
+    void sound_play_ball_with_border();
+    void sound_play_ball_with_platform();
+    void sound_play_prize_caught();
+    void sound_play_game_over();
+    void sound_play_level_over();
+    void sound_play_level_begin();
+    //-------------------------------------------------------------------
 
 protected:
     QLabel* lb_score = nullptr; // баллы, набранные  текущей сцене
@@ -47,6 +70,12 @@ protected:
     QLabel* lb_level = nullptr; // текущий уровень игры
     QLabel* lb_lifes = nullptr; // количество жизней игрока
     Device_Prizes_List* device_prizes_list = nullptr; // прибор отображения активных призов
+
+    QMediaPlaylist playlist; // плейлист проигрываемой музыки
+    QMediaPlayer music; // медиа-плейер
+    QMap<QString,QSoundEffect*> sound_effects; // словарь саундэффектов для воспроизедения звуков
+
+    void sound_play_from_qmap(QString qmap_key,QString wav_filename);
 };
 
 #endif // GAMESTATE_H

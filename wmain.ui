@@ -177,7 +177,7 @@ color :  rgb(2, 250, 3);
 </string>
             </property>
             <property name="text">
-             <string>1000</string>
+             <string>0</string>
             </property>
             <property name="margin">
              <number>0</number>
@@ -232,7 +232,7 @@ color :  rgb(2, 250, 3);
 </string>
             </property>
             <property name="text">
-             <string>9999</string>
+             <string>0</string>
             </property>
            </widget>
           </item>
@@ -342,7 +342,7 @@ color :  rgb(2, 250, 3);
 </string>
             </property>
             <property name="text">
-             <string>50</string>
+             <string>3</string>
             </property>
            </widget>
           </item>

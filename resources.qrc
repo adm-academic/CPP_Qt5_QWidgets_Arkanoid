@@ -10,7 +10,6 @@
         <file>images/about_image.png</file>
         <file>suite/1.jpg</file>
         <file>suite/2.jpg</file>
-        <file>sounds/backround.mp3</file>
         <file>sounds/ball_with_platform.wav</file>
         <file>sounds/ball_with_border.wav</file>
         <file>sounds/ball_lost.wav</file>
@@ -22,5 +21,14 @@
         <file>fonts/Practice-font.otf</file>
         <file>fonts/Practice-font-Mono.otf</file>
         <file>fonts/Orbit B BT.ttf</file>
+        <file>sounds/game_over.wav</file>
+        <file>sounds/gaming.mp3</file>
+        <file>sounds/level_over.wav</file>
+        <file>images/prize_score_50.png</file>
+        <file>images/prize_score_100.png</file>
+        <file>images/prize_score_250.png</file>
+        <file>images/prize_score_500.png</file>
+        <file>images/prize_fast.png</file>
+        <file>images/prize_slow.png</file>
     </qresource>
 </RCC>

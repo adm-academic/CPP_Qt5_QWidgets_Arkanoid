@@ -65,15 +65,10 @@ void Prize::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
     QPainter painter(this);
 
-    //настраиваем кисть
-    QBrush brush(Qt::green);
-    brush.setStyle(Qt::SolidPattern);
-    painter.setBrush(brush);
-
-    // отрисовываем фон
-    painter.drawRect( 0,0, this->width(), this->height()  );
-
-    // отрисуем прогрессбар
+    painter.drawImage( QRect(0,0,this->width(), this->height() ), \
+                       this->image, \
+                       QRect(0,0,this->image.width(), this->image.height()) \
+                       );
     this->draw_progress(painter);
 }
 

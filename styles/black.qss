@@ -39,6 +39,11 @@ QWidget{
     font-family: "Xolonium";
 }
 
+QDialog{
+    background-color: rgb(0,0,0);
+    font-family: "Xolonium";
+}
+
 QLabel{
     background-color: rgba( 0, 0, 0, 0 );
     font-family: "Xolonium";

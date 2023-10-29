@@ -36,7 +36,7 @@ void Ball::paintEvent(QPaintEvent *event){ // отисовываем карти�
 
 
 void Ball::ball_flying_start(){ // запускаем шарик в полёт
-    this->play_sound_collision_with_platform();
+    gamestate->sound_play_ball_with_platform();
     this->move( this->x(), this->y() - 1); // приподнимем шарик слегка вверх
     // над платформой, чтобы он к ней не прилиал на старте
     this->ball_is_flying = true;
@@ -87,28 +87,30 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
 
     // обрабатываем столкновения со стенками игрового поля
     if ( this->x()<=0 ){// столкновение с левой стенкой
-        this->play_sound_collision_with_border();
+        gamestate->sound_play_ball_with_border();
         this->ball_angle = get_angle_mirror( this->ball_angle, Barrier_Type::barrier_left );
         this->move( 0,this->y() ); // поставим виджет перед стенкой, с которой он столкнулся
         return;
     }
     else if ( this->y()<=0 ) {// столкновение с верхней стенкой
-        this->play_sound_collision_with_border();
+        gamestate->sound_play_ball_with_border();
         this->ball_angle = get_angle_mirror( this->ball_angle, Barrier_Type::barrier_top );
         this->move( this->x(), 0 ); // поставим виджет перед стенкой, с которой он столкнулся
         return;
     }
     else if ( this->x()>=(gameframe->width()-this->width()) ){ // столкновение с правой стенкой
-        this->play_sound_collision_with_border();
+        gamestate->sound_play_ball_with_border();
         this->ball_angle = get_angle_mirror( this->ball_angle, Barrier_Type::barrier_right );
         this->move( gameframe->width()-this->width(), \
                     this->y() ); // поставим виджет перед стенкой, с которой он столкнулся
         return;
     }
     else if ( this->y()>gameframe->height() ){ // выход на пределы нижней стенки
-        this->play_sound_ball_lost();
-        /// !!!!!!!!!!!!! здесь нужно с помощью сигнало-слотов обеспечить геймлей потери шарика ...
-        /// !!!!!!!!!!!!! вычет количества жизней, завершение уровня и так далее ...
+        gamestate->sound_play_ball_lost();
+        gamestate->decrement_lifes();
+        if ( gamestate->get_lifes()<=0 ){ // завершаем игру - игрок проиграл
+            gamestate->game_over();
+        }
         this->ball_landing();
         return;
     }
@@ -129,11 +131,13 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
             // если шарик достиг платформы левым или правым краем
             if ( this->ball_must_be_caught ){ // если мяч должен быть пойман
                 this->ball_landing();
+                gamestate->sound_play_ball_with_platform();
             }else{ // если мячик не нужно ловить, значит нужно отбивать
                 this->ball_angle = get_angle_mirror( this->ball_angle, Barrier_Type::barrier_bottom );
                 this->move( this->x() , \
                             bottom_coordinate_value - this->height()  ); // поставим виджет наверх платформы
-                this->play_sound_collision_with_platform();
+
+                gamestate->sound_play_ball_with_platform();
                 return;
             }
         }
@@ -164,7 +168,9 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                          between(ball_right,block_left,block_right) ){ // пересеклись снизу блока
                         this->ball_angle = get_angle_mirror( this->ball_angle, \
                                                              Barrier_Type::barrier_top ); // помеха сверху, отразим шарик от блока
-                        this->play_sound_collision_with_block();
+
+                        gamestate->add_score(25);
+                        gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
 
                     }
@@ -175,7 +181,9 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                          between(ball_bottom,block_top,block_bottom) ){
                         this->ball_angle = get_angle_mirror( this->ball_angle, \
                                                              Barrier_Type::barrier_left ); // помеха слева, отразим шарик от блока
-                        this->play_sound_collision_with_block();
+
+                        gamestate->add_score(25);
+                        gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
                     }
                 }
@@ -185,7 +193,9 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                          between(ball_right,block_left,block_right) ){
                         this->ball_angle = get_angle_mirror( this->ball_angle, \
                                                              Barrier_Type::barrier_bottom ); // помеха снизу, отразим шарик от блока
-                        this->play_sound_collision_with_block();
+
+                        gamestate->add_score(25);
+                        gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
                     }
                 }
@@ -195,7 +205,9 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                          between(ball_bottom,block_top,block_bottom) ){
                         this->ball_angle = get_angle_mirror( this->ball_angle, \
                                                              Barrier_Type::barrier_right ); // помеха справа, отразим шарик от блока
-                        this->play_sound_collision_with_block();
+
+                        gamestate->add_score(25);
+                        gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
                     }
                 };
@@ -204,37 +216,9 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
             /// ! всегда коректно отражается !
         } // end for x
     } // end for y
-
-
 }
 
-void Ball::play_sound_collision_with_platform(){
-    // проиграем звук удара мяча о платформу
-    this->sound_effect.setSource(QUrl::fromLocalFile("sounds/ball_with_platform.wav"));
-    this->sound_effect.setVolume(1.0f);
-    this->sound_effect.play();
-}
 
-void Ball::play_sound_collision_with_border(){
-    // проиграем звук удара мяча о границы
-    this->sound_effect.setSource(QUrl::fromLocalFile("sounds/ball_with_border.wav"));
-    this->sound_effect.setVolume(1.0f);
-    this->sound_effect.play();
-}
-
-void Ball::play_sound_ball_lost(){
-    // проиграем звук при потере мяча
-    this->sound_effect.setSource(QUrl::fromLocalFile("sounds/ball_lost.wav"));
-    this->sound_effect.setVolume(1.0f);
-    this->sound_effect.play();
-}
-
-void Ball::play_sound_collision_with_block(){
-    // проиграем звук при столкновении с блоком
-    this->sound_effect.setSource(QUrl::fromLocalFile("sounds/ball_with_block.wav"));
-    this->sound_effect.setVolume(1.0f);
-    this->sound_effect.play();
-}
 
 bool Ball::get_ball_must_be_caught(){
     return this->ball_must_be_caught;
@@ -242,4 +226,12 @@ bool Ball::get_ball_must_be_caught(){
 
 void Ball::set_ball_must_be_caught(bool be_caught){
     this->ball_must_be_caught = be_caught;
+}
+
+int Ball::get_default_deltha(){
+    return this->default_deltha;
+}
+
+void Ball::set_deltha(int deltha){
+    this->deltha = deltha;
 }

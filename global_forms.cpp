@@ -6,4 +6,5 @@ WMain*      wmain;
 WLanguage*  wlanguage;
 WAbout*     wabout;
 WSettings*  wsettings;
+WGameOver*  wgameover;
 

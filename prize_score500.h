@@ -1,26 +1,21 @@
-// приз, который добавляет ещё одну жизнь
-#ifndef PRIZE_LIFE_H
-#define PRIZE_LIFE_H
+#ifndef PRIZE_SCORE500_H
+#define PRIZE_SCORE500_H
 
 #include "prize.h"
+#include <QObject>
 #include <QWidget>
 
-
-class Prize_Life : public Prize
+class Prize_Score500 : public Prize
 {
     Q_OBJECT
 public:
-    Prize_Life(QWidget *parent = nullptr);
+    Prize_Score500(QWidget *parent = nullptr);
 
     bool with_expiration_time(); // истина если объект поддерживает таймаут действия
     QString get_class_id(); // возвращает текстовый идентификатор класса
 
     void single_action_of_a_prize();// Добавляет приз в игру, к примеру жизнь или очки
 
-
-protected:
-
-
 };
 
-#endif // PRIZE_LIFE_H
+#endif // PRIZE_SCORE500_H

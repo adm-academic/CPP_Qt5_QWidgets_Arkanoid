@@ -25,10 +25,17 @@ SOURCES += \
     prize.cpp \
     prize_catch.cpp \
     prize_expand.cpp \
+    prize_fast.cpp \
     prize_life.cpp \
+    prize_score100.cpp \
+    prize_score250.cpp \
+    prize_score50.cpp \
+    prize_score500.cpp \
+    prize_slow.cpp \
     sceneloader.cpp \
     settings.cpp \
     wabout.cpp \
+    wgameover.cpp \
     wlanguage.cpp \
     wmain.cpp \
     wsettings.cpp
@@ -47,16 +54,24 @@ HEADERS += \
     prize.h \
     prize_catch.h \
     prize_expand.h \
+    prize_fast.h \
     prize_life.h \
+    prize_score100.h \
+    prize_score250.h \
+    prize_score50.h \
+    prize_score500.h \
+    prize_slow.h \
     sceneloader.h \
     settings.h \
     wabout.h \
+    wgameover.h \
     wlanguage.h \
     wmain.h \
     wsettings.h
 
 FORMS += \
     wabout.ui \
+    wgameover.ui \
     wlanguage.ui \
     wmain.ui \
     wsettings.ui

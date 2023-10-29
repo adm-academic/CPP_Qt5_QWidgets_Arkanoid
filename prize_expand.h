@@ -20,8 +20,6 @@ public:
     void single_action_of_a_prize();// Добавляет приз в игру, к примеру жизнь или очки
 
 protected:
-    void paintEvent(QPaintEvent *event);
-
     int stored_width; // здесь храним оригинальную ширину платформы
     QImage* stored_original_image; // здесь храним оригинальную картинку платформы
     QImage* stored_prize_image; // картинка призового эффекта платформы

@@ -27,6 +27,7 @@ WMain::WMain(QWidget *parent)
                             this->ui->lb_Level, this->ui->lb_Lifes, \
                             this->ui->dpl_ActivePrizes \
                            );
+    gamestate->load_game();
 }
 
 WMain::~WMain()
@@ -82,12 +83,13 @@ void WMain::on_actionSettings_Window_triggered()
 
 void WMain::on_tb_SceneClear_pressed()
 {
-   this->ui->fr_game->in_frame_unload_scene();
+   this->ui->fr_game->unload_scene_in_frame();
 }
 
 
 void WMain::on_tb_InitScene_pressed()
 {
-    this->ui->fr_game->in_frame_load_scene();
+    this->ui->fr_game->load_scene_in_frame();
+    gamestate->set_lifes(3);
 }
 

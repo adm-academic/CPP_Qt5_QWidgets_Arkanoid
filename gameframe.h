@@ -10,8 +10,6 @@
 #include <QEvent>
 #include <QTimer>
 #include <QImage>
-#include <QtMultimedia/QMediaPlayer>
-#include <QtMultimedia/QMediaPlaylist>
 #include "device_prizes_list.h"
 
 
@@ -31,8 +29,8 @@ public:
     void regenerate_stars(); // заново генерирует вектор со звёздами, которые отображаются на фоне
     Platform* get_platform(); // возвращает указатель на платформу
     Ball*     get_ball(); // возвращает указатель на шарик
-    void in_frame_load_scene(); // загружает сцену арканоида во фрейм
-    void in_frame_unload_scene(); //выгружает сцену арканоида во фрейм
+    void load_scene_in_frame(); // загружает сцену арканоида во фрейм
+    void unload_scene_in_frame(); //выгружает сцену арканоида из фрейма
     QVector <QVector <Block*> > get_blocks_vector(); // возвращает вектор блоков
     void delete_block(int y_row, int x_col); // удаляет объект-блок из вектора и записывает nullptr; 
 
@@ -44,8 +42,6 @@ private:
                              // просто удаляется из этого списка, если пойман - то
                              // переписывается в объект класса Device_Prizes_List
     QImage background_image; // фоновая картинка игрового поля
-    QMediaPlaylist playlist; // плейлист проигрываемой музыки
-    QMediaPlayer music; // медиа-плейер
     Platform* platform = nullptr; // указатель на объект платформы
     Ball*     ball = nullptr; // указатель на объект шарика
     bool scene_loaded=false; // истина если во фрейм загружена сцена
@@ -60,8 +56,7 @@ private:
     void deinitialize_platform();// выгружает платформу
     void deinitialize_ball();// выгружает шарик
     void paint_frame(); // рисует рамку вокруг игрового поля
-    void play_sound_game_over(); // проигрывает звук при проигрыше
-    void play_sound_game_win(); // ............. проигрывает звук при выигрыше
+    void delete_all_flying_prizes(); // удаляет все падающие в данный момент призы
 
 protected slots:
     void process_prizes_on_timer();

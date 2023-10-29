@@ -12,16 +12,7 @@ Prize_Catch::Prize_Catch(QWidget *parent)
     this->image.load(":/rc/images/prize_catch.png");
 }
 
-void Prize_Catch::paintEvent(QPaintEvent *event){
-    Q_UNUSED(event);
-    QPainter painter(this);
 
-    painter.drawImage( QRect(0,0,this->width(), this->height() ), \
-                       this->image, \
-                       QRect(0,0,this->image.width(), this->image.height()) \
-                       );
-    this->draw_progress(painter);
-}
 
 bool Prize_Catch::with_expiration_time(){
     return true;

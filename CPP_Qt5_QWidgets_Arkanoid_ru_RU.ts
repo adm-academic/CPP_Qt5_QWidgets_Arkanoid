@@ -22,13 +22,28 @@ For demo purposes only.
 
 Autumn 2023 year.</oldsource>
         <translation>Демонстрационная игра Arkanoid
-Только для целей демонстрации.
+Только для целей ознакомления.
 
 Осень 2023 года.
 
 Автор:  Алексеев Дмитрий Михайлович
 Лицензия GPL
 </translation>
+    </message>
+</context>
+<context>
+    <name>WGameOver</name>
+    <message>
+        <location filename="wgameover.ui" line="14"/>
+        <source>Game Over</source>
+        <translation>Игра закончена</translation>
+    </message>
+    <message>
+        <location filename="wgameover.ui" line="23"/>
+        <source>Game Over! Try again!</source>
+        <oldsource>Game Over! 
+Try again!</oldsource>
+        <translation>Игра закончена! Попробуйте снова!</translation>
     </message>
 </context>
 <context>
@@ -84,19 +99,9 @@ Autumn 2023 year.</oldsource>
         <translation>СЧЁТ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="180"/>
-        <source>1000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="wmain.ui" line="205"/>
         <source>HIGH SCORE</source>
         <translation>НАИВЫСШИЙ СЧЁТ</translation>
-    </message>
-    <message>
-        <location filename="wmain.ui" line="235"/>
-        <source>9999</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="wmain.ui" line="263"/>
@@ -114,8 +119,14 @@ Autumn 2023 year.</oldsource>
         <translation>ЖИЗНИ</translation>
     </message>
     <message>
+        <location filename="wmain.ui" line="180"/>
+        <location filename="wmain.ui" line="235"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="wmain.ui" line="345"/>
-        <source>50</source>
+        <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -150,7 +161,7 @@ Autumn 2023 year.</oldsource>
     </message>
     <message>
         <location filename="wmain.ui" line="470"/>
-        <location filename="wmain.cpp" line="64"/>
+        <location filename="wmain.cpp" line="65"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
@@ -160,7 +171,7 @@ Autumn 2023 year.</oldsource>
         <translation>Окно настроек игры</translation>
     </message>
     <message>
-        <location filename="wmain.cpp" line="64"/>
+        <location filename="wmain.cpp" line="65"/>
         <source>Quit?</source>
         <translation>Завершить?</translation>
     </message>

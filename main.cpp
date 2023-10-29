@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
     wlanguage = new WLanguage();
     wabout    = new WAbout();
     wsettings = new WSettings();
+    wgameover = new WGameOver();
     wmain     = new WMain();
     wmain->show();
     return a.exec();

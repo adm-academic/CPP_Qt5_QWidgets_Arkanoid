@@ -14,6 +14,7 @@ class Device_Prizes_List : public Device_Background
 public:
     explicit Device_Prizes_List(QWidget *parent = nullptr);
     void     add_prize(Prize* prize); // добавляет приз в прибор отображения.
+    void     clear_prizes(); // очищаем экран с активными призами
     bool     alreay_contains_similar_prize(Prize* prize);// истина если приз уже содержится в приборе
 
 private:
@@ -21,7 +22,7 @@ private:
     QTimer prizes_timer; // таймер для управления временем жизни текущих призов
     void arrange_and_show_prizes(); //  перестраивает и выводит на экран текущий список призов
     const int spacing = 5;
-    const int prize_width = 60;
+    const int prize_width = 80;
     const int prize_height = 30;
 protected:
 

@@ -111,6 +111,14 @@ void Device_Prizes_List::add_prize(Prize* prize){
     };
 }
 
+void Device_Prizes_List::clear_prizes(){
+    foreach (Prize* prize_item, this->active_prizes)
+    {
+        prize_item->hide();
+        delete prize_item;
+    };
+    this->active_prizes.clear();
+}
 
 bool Device_Prizes_List::alreay_contains_similar_prize(Prize* prize){
     // поищем такой-же приз в приборе

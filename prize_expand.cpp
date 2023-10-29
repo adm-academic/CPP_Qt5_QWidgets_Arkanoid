@@ -12,16 +12,6 @@ Prize_Expand::Prize_Expand(QWidget *parent)
     this->image.load(":/rc/images/prize_expand.png");
 }
 
-void Prize_Expand::paintEvent(QPaintEvent *event){
-    Q_UNUSED(event);
-    QPainter painter(this);
-
-    painter.drawImage( QRect(0,0,this->width(), this->height() ), \
-                       this->image, \
-                       QRect(0,0,this->image.width(), this->image.height()) \
-                       );
-    this->draw_progress(painter);
-}
 
 bool Prize_Expand::with_expiration_time(){
     return true;

@@ -8,6 +8,12 @@
 #include "prize_catch.h"
 #include "prize_expand.h"
 #include "prize_life.h"
+#include "prize_score50.h"
+#include "prize_score100.h"
+#include "prize_score250.h"
+#include "prize_score500.h"
+#include "prize_slow.h"
+#include "prize_fast.h"
 #include "global_forms.h"
 #include "global_widgets.h"
 
@@ -17,12 +23,8 @@ GameFrame::GameFrame(QWidget *parent): QFrame{parent}
     this->setMouseTracking(true); // включим отслеживание мышки виджетом
     this->game_timer.setInterval( 100 ); // установим интервал игрового таймера
 
-    // включим фоновую музыку
-    playlist.addMedia(QUrl("qrc:/rc/sounds/backround.mp3"));
-    playlist.setPlaybackMode(QMediaPlaylist::Loop);
-    music.setPlaylist(&this->playlist);
-    //!!!music.play();
 
+    ///!!!!!! временное решение
     this->background_image.load(":/rc/suite/2.jpg");
 
 
@@ -53,11 +55,11 @@ Ball*     GameFrame::get_ball(){
 }
 
 void GameFrame::initialize_statically_background(){
-    // ... !!! пропущено. доделать !!!
+    // !!!!!!!!!!! пропущено. доделать !!!
 }
 
 void GameFrame::deinitialize_statically_backround(){
-    // ... !!! пропущено. доделать !!!
+    // !!!!!!!!!!! пропущено. доделать !!!
 }
 
 void GameFrame::initialize_statically_blocks(){
@@ -150,9 +152,10 @@ void GameFrame::regenerate_stars(){
     }
 }
 
-void GameFrame::in_frame_unload_scene(){
-    if ( this->scene_loaded ){ // выполняем действия только если сцена загружена
+void GameFrame::unload_scene_in_frame(){ /// !!!!!!
+    if ( this->scene_loaded ){//  выполняем действия только если сцена загружена
         this->scene_loaded = false;
+        this->delete_all_flying_prizes();
         this->deinitialize_statically_backround();
         this->deinitialize_statically_blocks();
         this->deinitialize_ball();
@@ -160,8 +163,8 @@ void GameFrame::in_frame_unload_scene(){
     };
 }
 
-void GameFrame::in_frame_load_scene(){
-    if (! this->scene_loaded ){ // выыполняем действия только если сцена не загружена
+void GameFrame::load_scene_in_frame(){ /// !!!!!!
+    if (! this->scene_loaded ){ // выполняем действия только если сцена не загружена
         this->regenerate_stars();
         this->initialize_statically_background();
         this->initialize_statically_blocks();
@@ -173,8 +176,8 @@ void GameFrame::in_frame_load_scene(){
 
 void GameFrame::resizeEvent( QResizeEvent *event ){// при изменении размера окна подстраиваем размер содержимого
     Q_UNUSED(event);
-    // ... НЕ РАБОТАЕТ АВТОПОДГОНКА СЦЕН ПРИ РЕСАЙЗЕ ОКНА ...
-    // ... сцена генерируется заново, хотя должна просто растягиваться под новый размер окна ...
+    /// !!!!!!!!! НЕ РАБОТАЕТ АВТОПОДГОНКА СЦЕН ПРИ РЕСАЙЗЕ ОКНА ...
+    /// !!!!!!!!! сцена генерируется заново, хотя должна просто растягиваться под новый размер окна ...
 }
 
 void GameFrame::keyPressEvent(QKeyEvent *event){
@@ -270,23 +273,13 @@ void GameFrame::paint_frame() {
     painter.drawRect(this->width()-frame_width,0,this->width(),this->height());
 }
 
-
-
-void GameFrame::play_sound_game_over(){
-    // !!!!!!!!!!!!!!!!!!!!!!!!!
-    // проиграем звук если уровень закончился проигрышем
-    ///this->sound_effect.setSource(QUrl::fromLocalFile("sounds/level_over.wav"));
-    ///this->sound_effect.setVolume(1.0f);
-    ///this->sound_effect.play();
-}
-
 void GameFrame::create_random_prize_at(int x, int y){
     //int random_prize_creation = QRandomGenerator::global()->bounded( 1, 3+1 );
     //if ( random_prize_creation !=1 ) return; // обеспечиваем редкое выпадение призов
 
-    int prizes_clases_count = 3;
+    int prizes_classes_count = 9;
     int random_prize_selector = QRandomGenerator::global()->bounded( 1,
-                                                prizes_clases_count + 1  ); // значение
+                                                prizes_classes_count + 1  ); // значение
                                                // селектора для выбора рандомного приза
     Prize* prz = nullptr;
     if     ( random_prize_selector==1 ){
@@ -306,8 +299,56 @@ void GameFrame::create_random_prize_at(int x, int y){
         game_frame_prizes.append(prz);
         prz->move(x,y);
         prz->show();
+    }
+    else if ( random_prize_selector==4 ){
+        prz = new Prize_Score50(this);
+        game_frame_prizes.append(prz);
+        prz->move(x,y);
+        prz->show();
+    }
+    else if ( random_prize_selector==5 ){
+        prz = new Prize_Score100(this);
+        game_frame_prizes.append(prz);
+        prz->move(x,y);
+        prz->show();
+    }
+    else if ( random_prize_selector==6 ){
+        prz = new Prize_Score250(this);
+        game_frame_prizes.append(prz);
+        prz->move(x,y);
+        prz->show();
+    }
+    else if ( random_prize_selector==7 ){
+        prz = new Prize_Score500(this);
+        game_frame_prizes.append(prz);
+        prz->move(x,y);
+        prz->show();
+    }
+    else if ( random_prize_selector==8 ){
+        prz = new Prize_Slow(this);
+        game_frame_prizes.append(prz);
+        prz->move(x,y);
+        prz->show();
+    }
+    else if ( random_prize_selector==9 ){
+        prz = new Prize_Fast(this);
+        game_frame_prizes.append(prz);
+        prz->move(x,y);
+        prz->show();
     };
 
+
+}
+
+void GameFrame::delete_all_flying_prizes(){
+    foreach( Prize* prz, this->game_frame_prizes )
+    {
+        this->game_frame_prizes.removeAt(
+        this->game_frame_prizes.indexOf( prz ) ); // удалим ссылку на
+                             // объект приза из списка где он хранился
+        prz->hide(); // скроем приз
+        delete prz; // удалим приз
+    };
 }
 
 void GameFrame::process_prizes_on_timer(){
@@ -329,6 +370,7 @@ void GameFrame::process_prizes_on_timer(){
             if ( ( prz_left_x>platform_left_x and prz_left_x<platform_right_x  ) or \
                  ( prz_right_x>platform_left_x and prz_right_x<platform_right_x ) ){
                 // Этот приз пойман!
+                gamestate->sound_play_prize_caught();
                 this->game_frame_prizes.removeAt(
                 this->game_frame_prizes.indexOf( prz ) );// теперь удалим ссылку на
                                        // объект приза из списка где он хранился
@@ -345,6 +387,7 @@ void GameFrame::process_prizes_on_timer(){
             this->game_frame_prizes.removeAt(
             this->game_frame_prizes.indexOf( prz ) );// теперь удалим ссылку на
                                    // объект приза из списка где он хранился
+            prz->hide();
             delete prz; // удалим объект приза чтобы не убегала память
         };
     };

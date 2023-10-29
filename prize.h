@@ -33,7 +33,7 @@ public:
 protected:
 
     const int default_timeout = 15; // таймаут о умолчанию  секундах
-    const int prize_width = 60; // ширина приза в пикселях
+    const int prize_width = 80; // ширина приза в пикселях
     const int prize_height = 30; // высота приза в пикселях
     const int increent_gravity_value = 10; // приращение при движении по экрану
     uint timeout_seconds; // значение таймаута в секундах
