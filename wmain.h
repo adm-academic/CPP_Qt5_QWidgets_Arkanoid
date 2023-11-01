@@ -8,6 +8,7 @@
 #include <QFont>
 #include "block.h"
 #include "gameframe.h"
+#include "global_widgets.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,7 +23,7 @@ public:
     WMain(QWidget *parent = nullptr);
     ~WMain();
     GameFrame* get_gameframe();
-
+    void show_level_info(LevelInfo level_info);
 
 protected:
     void changeEvent(QEvent* pe);
@@ -30,6 +31,8 @@ protected:
 
 
 private slots:
+
+
     void on_actionLocale_triggered();
 
     void on_actionExit_triggered();

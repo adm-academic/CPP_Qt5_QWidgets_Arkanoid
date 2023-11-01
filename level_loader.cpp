@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QDebug>
 #include "global_widgets.h"
+#include "global_forms.h"
 
 Level_Loader::Level_Loader(QObject *parent)
     : QObject{parent}
@@ -100,10 +101,12 @@ bool Level_Loader::load_level_in_gameframe(int level_index){
     gameframe->set_backround_image_file( level_files_decriptors[level_index].backround_image );
     gameframe->repaint();
 
-    //!!!!!!!!!!!! эти данные тоже нужно отображать в игре
-    qDebug() << data[0][1]; //!!!!!!!!!!!! версия формата файла
-    qDebug() << data[1][1]; //!!!!!!!!!!!! описание уровня на английском языке
-    qDebug() << data[2][1]; //!!!!!!!!!!!! описание уровня на русском языке
+    // обработаем дополнительную информацию об уровне!
+    //qDebug() << data[0][1]; // версия формата файла
+    LevelInfo li;
+    li.LevelNameEn=data[1][1]; //описание уровня на английском языке
+    li.LevelNameRu=data[2][1]; //описание уровня на русском языке
+    wmain->show_level_info(li);
 
     int start_row=6;
     int start_col=0;

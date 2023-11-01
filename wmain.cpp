@@ -30,6 +30,18 @@ WMain::WMain(QWidget *parent)
 
 }
 
+// метод для вывода информации о текущем уровне
+void WMain::show_level_info(LevelInfo level_info){
+    QString level_locality;
+    if ( app_settings.application_locale_get()=="en_US" ){
+        level_locality = level_info.LevelNameEn;
+    }
+    else if ( app_settings.application_locale_get()=="ru_RU" ) {
+        level_locality = level_info.LevelNameRu;
+    };
+    this->ui->statusbar->showMessage( level_locality );
+}
+
 WMain::~WMain()
 {
     delete ui;

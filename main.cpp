@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     };
 
     // загрузим главную таблицу стилей оформления игры из ресурсов приложения
-    QFile file(":/rc/styles/black.qss");
+    QFile file("styles/black.qss");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
     qApp->setStyleSheet(styleSheet);

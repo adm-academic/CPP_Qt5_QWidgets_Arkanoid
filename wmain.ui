@@ -264,7 +264,7 @@ color :  rgb(2, 250, 3);
 </string>
             </property>
             <property name="text">
-             <string>1</string>
+             <string>0</string>
             </property>
            </widget>
           </item>

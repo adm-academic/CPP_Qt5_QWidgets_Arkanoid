@@ -7,5 +7,10 @@
 extern GameFrame* gameframe;
 extern GameState* gamestate;
 
+struct LevelInfo{
+    QString LevelNameEn;
+    QString LevelNameRu;
+};
+
 
 #endif // GLOBAL_WIDGETS_H

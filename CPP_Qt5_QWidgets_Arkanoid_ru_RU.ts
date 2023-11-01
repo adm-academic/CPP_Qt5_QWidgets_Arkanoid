@@ -11,7 +11,7 @@
     <message>
         <location filename="gameframe.cpp" line="213"/>
         <source>You have completed the level !</source>
-        <translation>Вы завершили очредной уровень  игре Arkanoid!</translation>
+        <translation>Вы завершили очредной уровень в игре Arkanoid!</translation>
     </message>
 </context>
 <context>
