@@ -1,31 +1,5 @@
 <RCC>
     <qresource prefix="/rc">
-        <file>fonts/ArkanoidSolid.ttf</file>
-        <file>images/ball.png</file>
-        <file>images/block_green.png</file>
-        <file>images/platform.png</file>
-        <file>images/spacesheep_1.jpeg</file>
-        <file>fonts/Xolonium-Regular.otf</file>
-        <file>styles/black.qss</file>
-        <file>images/about_image.png</file>
-        <file>sounds/ball_with_platform.wav</file>
-        <file>sounds/ball_with_border.wav</file>
-        <file>sounds/ball_lost.wav</file>
-        <file>sounds/ball_with_block.wav</file>
-        <file>images/prize_catch.png</file>
-        <file>images/prize_expand.png</file>
-        <file>images/prize_life.png</file>
-        <file>images/platform_expanding.png</file>
-        <file>fonts/Practice-font.otf</file>
-        <file>fonts/Practice-font-Mono.otf</file>
-        <file>fonts/Orbit B BT.ttf</file>
-        <file>sounds/game_over.wav</file>
         <file>sounds/gaming.mp3</file>
-        <file>images/prize_score_50.png</file>
-        <file>images/prize_score_100.png</file>
-        <file>images/prize_score_250.png</file>
-        <file>images/prize_score_500.png</file>
-        <file>images/prize_fast.png</file>
-        <file>images/prize_slow.png</file>
     </qresource>
 </RCC>

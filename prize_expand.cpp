@@ -9,7 +9,7 @@
 
 Prize_Expand::Prize_Expand(QWidget *parent)
     : Prize{parent}{
-    this->image.load(":/rc/images/prize_expand.png");
+    this->image.load("images/prize_expand.png");
 }
 
 
@@ -26,7 +26,7 @@ void Prize_Expand::expand_game_mechanics(){
     gameframe->get_platform()->set_width( gameframe->get_platform()->get_width() * 2 );
 
     this->stored_original_image = gameframe->get_platform()->get_image();
-    this->stored_prize_image = new QImage(":/rc/images/platform_expanding.png");
+    this->stored_prize_image = new QImage("images/platform_expanding.png");
 
     gameframe->get_platform()->set_image( this->stored_prize_image );
 }

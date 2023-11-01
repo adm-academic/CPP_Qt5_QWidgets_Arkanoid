@@ -8,7 +8,7 @@
 Prize_Life::Prize_Life(QWidget *parent)
     : Prize{parent}
 {
-    this->image.load(":/rc/images/prize_life.png");
+    this->image.load("images/prize_life.png");
 }
 
 

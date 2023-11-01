@@ -16,7 +16,7 @@ Ball::Ball(QWidget *parent)
 
     this->resize( this->ball_width, this->ball_height ); // меняем размер виджета как указано в объявлении класса
 
-    this->image.load(":/rc/images/ball.png"); // загружаем картинку шарика в объект изобажения
+    this->image.load("images/ball.png"); // загружаем картинку шарика в объект изобажения
 
     setAttribute(Qt::WA_TransparentForMouseEvents); // делаем виджет прозрачным для мышки
 }

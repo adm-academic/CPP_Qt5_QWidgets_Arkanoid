@@ -4,7 +4,7 @@
 Prize_Score100::Prize_Score100(QWidget *parent)
     : Prize{parent}
 {
-    this->image.load(":/rc/images/prize_score_100.png");
+    this->image.load("images/prize_score_100.png");
 }
 
 

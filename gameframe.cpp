@@ -174,6 +174,10 @@ void GameFrame::unload_game_scene(){ // выгружает игровую сце
         this->deinitialize_ball();
         this->deinitialize_platform();
         this->set_neutral_background();
+
+        LevelInfo li; li.LevelNameEn=""; li.LevelNameRu="";
+        wmain->show_level_info(li);
+
     };
 }
 

@@ -168,7 +168,7 @@ void GameState::sound_play_from_qmap(QString qmap_key,QString wav_filename){
     if ( ! this->sound_effects.contains(qmap_key) ){
         this->sound_effects.insert(qmap_key,new QSoundEffect);
     }
-    this->sound_effects[qmap_key]->setSource(QUrl::fromLocalFile( wav_filename ));
+    this->sound_effects[qmap_key]->setSource( QUrl::fromLocalFile( wav_filename ));
     this->sound_effects[qmap_key]->setVolume(1.0f);
     this->sound_effects[qmap_key]->play();
 }

@@ -4,7 +4,7 @@
 Block::Block(QWidget *parent)
     : QWidget{parent}
 {
-    this->image.load(":/rc/images/block_green.png");
+    this->image.load("images/block_green.png");
 
     setAttribute(Qt::WA_TransparentForMouseEvents);
 }

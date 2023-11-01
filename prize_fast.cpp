@@ -3,7 +3,7 @@
 
 Prize_Fast::Prize_Fast(QWidget *parent)
     : Prize{parent}{
-    this->image.load(":/rc/images/prize_fast.png");
+    this->image.load("images/prize_fast.png");
 }
 
 bool Prize_Fast::with_expiration_time(){

@@ -19,11 +19,11 @@ int main(int argc, char *argv[])
     app_settings.load_current_config_file_locale();
 
     // загрузим кастомные шрифты из ресурсов приложения
-    QFontDatabase::addApplicationFont(":/rc/fonts/ArkanoidSolid.ttf");
-    QFontDatabase::addApplicationFont(":/rc/fonts/Xolonium-Regular.otf");
-    QFontDatabase::addApplicationFont(":/rc/fonts/Practice-font-Mono.otf");//"Practice-font Mono"
-    QFontDatabase::addApplicationFont(":/rc/fonts/Practice-font.otf");//"Practice-font"
-    QFontDatabase::addApplicationFont(":/rc/fonts/Orbit B BT.ttf");//"Orbit-B BT"
+    QFontDatabase::addApplicationFont("fonts/ArkanoidSolid.ttf");
+    QFontDatabase::addApplicationFont("fonts/Xolonium-Regular.otf");
+    QFontDatabase::addApplicationFont("fonts/Practice-font-Mono.otf");//"Practice-font Mono"
+    QFontDatabase::addApplicationFont("fonts/Practice-font.otf");//"Practice-font"
+    QFontDatabase::addApplicationFont("fonts/Orbit B BT.ttf");//"Orbit-B BT"
     QFontDatabase db;
     for(int i=0; i<db.families().size(); i++)
     {

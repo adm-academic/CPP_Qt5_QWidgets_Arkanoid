@@ -9,7 +9,7 @@
 Prize_Catch::Prize_Catch(QWidget *parent)
     : Prize{parent}
 {
-    this->image.load(":/rc/images/prize_catch.png");
+    this->image.load("images/prize_catch.png");
 }
 
 

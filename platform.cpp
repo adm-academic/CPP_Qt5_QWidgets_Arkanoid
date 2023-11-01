@@ -13,7 +13,7 @@ Platform::Platform(QWidget *parent)
     this->resize( this->platform_width, this->platform_height ); // зададим размер платформы
     this->set_platform_pos( (gameframe->width() / 2) - (this->width() / 2) ); // установим началную позицию платформы
 
-    this->image = new QImage(":/rc/images/platform.png");
+    this->image = new QImage("images/platform.png");
 }
 
 int Platform::get_platform_top(){
