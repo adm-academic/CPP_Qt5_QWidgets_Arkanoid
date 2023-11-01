@@ -38,7 +38,8 @@ SOURCES += \
     wgameover.cpp \
     wlanguage.cpp \
     wmain.cpp \
-    wsettings.cpp
+    wsettings.cpp \
+    wwin.cpp
 
 HEADERS += \
     ball.h \
@@ -67,14 +68,16 @@ HEADERS += \
     wgameover.h \
     wlanguage.h \
     wmain.h \
-    wsettings.h
+    wsettings.h \
+    wwin.h
 
 FORMS += \
     wabout.ui \
     wgameover.ui \
     wlanguage.ui \
     wmain.ui \
-    wsettings.ui
+    wsettings.ui \
+    wwin.ui
 
 TRANSLATIONS += \
     CPP_Qt5_QWidgets_Arkanoid_ru_RU.ts

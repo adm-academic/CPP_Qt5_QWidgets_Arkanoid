@@ -7,4 +7,4 @@ WLanguage*  wlanguage;
 WAbout*     wabout;
 WSettings*  wsettings;
 WGameOver*  wgameover;
-
+WWin*       wwin;

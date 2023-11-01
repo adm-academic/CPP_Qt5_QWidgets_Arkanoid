@@ -20,13 +20,16 @@ public:
                        // если есть ошибка - вернёт ложь
     int get_first_level_index(); // возвращает индекс первого уровня
     int get_last_level_index();  // возвращает индекс последнего уровня
-    bool load_level(int level_index); // загружает уровень по его индексу
-             // возвращает истину если загрузка прошла без ошибок иначе вернёт ложь
+    bool load_level_in_gameframe(int level_index); // загружает уровень по его индексу
+
+    bool is_initialized();// возвращает истину если загрузка прошла без ошибок иначе вернёт ложь
 
 private:
+    bool initialized;
     QList<Level_File_Descriptor> level_files_decriptors;
     int first_level_number; // номер первого уровня
     int last_level_number; // номер последнего уровня
+
 
 
 protected:

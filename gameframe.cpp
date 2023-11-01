@@ -5,6 +5,7 @@
 #include <QRandomGenerator>
 #include <QKeyEvent>
 #include <QPushButton>
+#include <QMessageBox>
 #include "prize_catch.h"
 #include "prize_expand.h"
 #include "prize_life.h"
@@ -23,10 +24,7 @@ GameFrame::GameFrame(QWidget *parent): QFrame{parent}
     this->setMouseTracking(true); // включим отслеживание мышки виджетом
     this->game_timer.setInterval( 100 ); // установим интервал игрового таймера
 
-
-    ///!!!!!!!!!!!!!!!!!!!!!!!! временное решение
-    this->background_image.load("levels/0.jpg");
-
+    this->set_neutral_background(); // устаноим нейтральный фон
 
     connect( &this->game_timer, SIGNAL(timeout()), \
              this,SLOT(process_prizes_on_timer()) ); // назначим таймер на обработчик падающих призов
@@ -38,6 +36,33 @@ QVector <QVector <Block*> > GameFrame::get_blocks_vector(){
     return this->blocks_pointers;
 }
 
+void  GameFrame::reinitialize_blocks_vector_size(int cols_x, int rows_y){
+    // очистим двумерный вектор от данных и установим ему нулевой размер
+    for (int row=0; row<this->blocks_pointers.count(); row++ ){
+        for (int col=0; col<this->blocks_pointers[row].count(); col++ ){
+            if ( this->blocks_pointers[row][col] != nullptr  ) // если ячейка вектора не пуста
+                delete this->blocks_pointers[row][col]; // то удалим объект блока из ячейки вектора
+            this->blocks_pointers[row][col] = nullptr; // занулим ячейку вектора!
+        };
+        // в первой размености массива мы храним не указатели, а объекты, поэтому удалять ничего не надо
+        // а вот размер сбросим
+        this->blocks_pointers[row].resize(0);
+    };
+    // здесь тоже сбосим размер до ноля
+    this->blocks_pointers.resize(0);
+
+
+    // инициализируем двумерный вектор с блоками
+    this->blocks_pointers.resize( rows_y ); // зададим размер вектора по строкам
+    for (int row_y=0; row_y < rows_y; row_y++ ){ // цикл по строкам
+        this->blocks_pointers[row_y].resize( cols_x ); // инициализируем размер вектора-строки
+                                                       // указав количество столбцов
+        for ( int col_x=0; col_x < cols_x ; col_x++ ){ // заполняем столбцы нулевыми указателями
+            this->blocks_pointers[ row_y ][ col_x ] = nullptr; // помещаем в ячейку вектора нулевой указатель
+        };                                                  // вектора вектор из столбцов
+    };
+}
+
 void GameFrame::delete_block(int y_row, int x_col){
     this->create_random_prize_at(this->blocks_pointers[y_row][x_col]->x(), \
                                  this->blocks_pointers[y_row][x_col]->y()   );
@@ -46,6 +71,30 @@ void GameFrame::delete_block(int y_row, int x_col){
     this->blocks_pointers[y_row][x_col]=nullptr;
 }
 
+void GameFrame::append_block(int y_row, int x_col){
+    Block* blk = new Block(this); // создаём новый блок
+
+    // количество столбцов блоков по горизонтали.
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // НЕКРАСИВО! ПОДУМАТЬ КАК СДЕЛАТЬ ЛУЧШЕ!
+    int blocks_col_count = this->blocks_pointers[0].count();
+
+    // инициализируем блок
+    blk->initialize_block( this->width(), blocks_col_count,
+                           this->blocks_begin_x, this->blocks_begin_y  );
+
+    // по порядковым координатам блока найдём его экранные координаты на фрейме
+    int x_coorinate = this->blocks_begin_x +
+            (( blk->get_width()  + blk->get_spacing() ) * x_col);
+    int y_coorinate = this->blocks_begin_y +
+            (( blk->get_height() + blk->get_spacing() ) * y_row);
+    blk->move( x_coorinate, y_coorinate );// позиционируем новый блок
+    blk->show();
+
+    blocks_pointers[y_row][x_col] = blk;// поместим указатель на блок в вектор указателей на блоки
+}
+
+
 Platform* GameFrame::get_platform(){
     return this->platform;
 }
@@ -53,43 +102,6 @@ Platform* GameFrame::get_platform(){
 Ball*     GameFrame::get_ball(){
     return this->ball;
 }
-
-void GameFrame::initialize_statically_background(){
-    // !!!!!!!!!!! пропущено. доделать !!!
-}
-
-void GameFrame::deinitialize_statically_backround(){
-    // !!!!!!!!!!! пропущено. доделать !!!
-}
-
-void GameFrame::initialize_statically_blocks(){
-    const int col_count = 10; // количество блоков в ширину яляется константой
-    const int block_height = 30; // высота блока является константой
-    const int block_spacing = 5; // величина промежутка между блоками является константой
-    const int begin_x = 15;
-    const int begin_y = 15;
-    const int block_width =  ( (this->width()-block_spacing ) / col_count) - \
-                             block_spacing - (begin_x / col_count);// ширина блока
-               // подстраивается под размер окна и другие переменные и константы
-
-    for (int i=0;i<3;i++){ // инициализируем двумерный вектор с блоками
-        QVector <Block*> row_blocks_pointers; // 1-мерный вектор указателей на блоки
-        row_blocks_pointers.resize(col_count); // инициализируем размер вектора указателей на блоки
-        for (int j=0;j<col_count;j++){ // заполняем 1-мерный вектор валидными указателями на блоки
-            Block* b = new Block(this); // создаём новый блок
-            b->resize( block_width, block_height ); // меняем размер нового блока
-            b->move( begin_x + (( block_width  + block_spacing ) * j), \
-                     begin_y + (( block_height + block_spacing ) * i)  \
-                   ); // позиционируем новый блок
-            b->setGeometry( b->x(), b->y(), b->width(), b->height() );
-            b->show();
-            row_blocks_pointers[j] = b; // добавляем блок в массив
-        };
-        this->blocks_pointers.append(row_blocks_pointers);
-    };
-}
-
-
 
 void GameFrame::initialize_platform(){
     if (this->platform != nullptr ){ // если объект платформы уже есть - то удалить его
@@ -116,7 +128,7 @@ void GameFrame::initialize_ball(){
 
 }
 
-void GameFrame::deinitialize_statically_blocks(){
+void GameFrame::clear_blocks(){
     for (int i=0;i<this->blocks_pointers.count();i++){
         for (int j=0;j<this->blocks_pointers[i].count();j++){
            if (this->blocks_pointers[i][j] != nullptr){
@@ -128,6 +140,8 @@ void GameFrame::deinitialize_statically_blocks(){
     };
     this->blocks_pointers.clear();
 }
+
+
 void GameFrame::deinitialize_platform(){
     if (this->platform != nullptr ){ // проверяем на ненулл и удаляем объект
         delete this->platform;
@@ -152,32 +166,63 @@ void GameFrame::regenerate_stars(){
     }
 }
 
-void GameFrame::unload_scene_in_frame(){ /// !!!!!!
+void GameFrame::unload_game_scene(){ // выгружает игровую сцену из фрейма
     if ( this->scene_loaded ){//  выполняем действия только если сцена загружена
         this->scene_loaded = false;
         this->delete_all_flying_prizes();
-        this->deinitialize_statically_backround();
-        this->deinitialize_statically_blocks();
+        this->clear_blocks();
         this->deinitialize_ball();
         this->deinitialize_platform();
+        this->set_neutral_background();
     };
 }
 
-void GameFrame::load_scene_in_frame(){ /// !!!!!!
+void GameFrame::load_game_scene(){ // загружает игровую сцену во фрейм
     if (! this->scene_loaded ){ // выполняем действия только если сцена не загружена
         this->regenerate_stars();
-        this->initialize_statically_background();
-        this->initialize_statically_blocks();
         this->initialize_platform();
         this->initialize_ball();
         this->scene_loaded = true;
     };
 }
 
+int  GameFrame::get_blocks_count(){
+    int block_left = 0; // здесь храним количество оставшихся блоков
+    for (int i=0;i<this->blocks_pointers.count();i++){
+            for (int j=0;j<this->blocks_pointers[i].count();j++){
+               if (this->blocks_pointers[i][j] != nullptr){
+                    block_left++;
+               };
+            };
+    };
+    return block_left;
+}
+
+
+void GameFrame::process_level_finished(){
+    // подсчитать количество оставшихся на экране блоков
+    int block_left = this->get_blocks_count();
+    if (block_left <= 0 ){ // все блоки выбиты - уровень закончился
+        gamestate->sound_play_level_win(); // проиграем звук конца уровня
+        this->delete_all_flying_prizes(); // удалим с поля все падающие призы
+
+        // для всех уровней кроме последнего отобразим окошко с информацией о завершении уровня!
+        if ( gamestate->get_level() < gamestate->get_level_loader()->get_last_level_index() ){
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, tr("Level Completed!"),
+                                          tr("You have completed the level !"),
+                                        QMessageBox::Yes | QMessageBox::No );
+        };
+    };
+}
+
+
+
+
 void GameFrame::resizeEvent( QResizeEvent *event ){// при изменении размера окна подстраиваем размер содержимого
     Q_UNUSED(event);
-    /// !!!!!!!!! НЕ РАБОТАЕТ АВТОПОДГОНКА СЦЕН ПРИ РЕСАЙЗЕ ОКНА ...
-    /// !!!!!!!!! сцена генерируется заново, хотя должна просто растягиваться под новый размер окна ...
+    ///!!!!!!!!! НЕ РАБОТАЕТ АВТОПОДГОНКА СЦЕН ПРИ РЕСАЙЗЕ ОКНА ...
+    ///!!!!!!!!! сцена генерируется заново, хотя должна просто растягиваться под новый размер окна ...
 }
 
 void GameFrame::keyPressEvent(QKeyEvent *event){
@@ -275,7 +320,7 @@ void GameFrame::paint_frame() {
 
 void GameFrame::create_random_prize_at(int x, int y){
     int random_prize_creation = QRandomGenerator::global()->bounded( 1, 3+1 );
-    if ( random_prize_creation !=1 ) return; // обеспечиваем редкое выпадение призов
+    if ( random_prize_creation ==1 ) return; // обеспечиваем редкое выпадение призов
 
     int prizes_classes_count = 9;
     int random_prize_selector = QRandomGenerator::global()->bounded( 1,
@@ -393,4 +438,11 @@ void GameFrame::process_prizes_on_timer(){
     };
 }
 
+void GameFrame::set_backround_image_file(QString image_filename){
+    this->background_image.load( image_filename );
+}
 
+void GameFrame::set_neutral_background(){
+    this->background_image.load( "images/backround.jpg" );
+    this->repaint();
+}

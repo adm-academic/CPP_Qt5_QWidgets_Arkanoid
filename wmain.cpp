@@ -27,7 +27,7 @@ WMain::WMain(QWidget *parent)
                             this->ui->lb_Level, this->ui->lb_Lifes, \
                             this->ui->dpl_ActivePrizes \
                            );
-    gamestate->load_game();
+
 }
 
 WMain::~WMain()
@@ -81,22 +81,23 @@ void WMain::on_actionSettings_Window_triggered()
 }
 
 
-void WMain::on_tb_SceneClear_pressed()
-{
-   this->ui->fr_game->unload_scene_in_frame();
+void WMain::on_actionNew_Game_triggered()
+{   // начнём игру с нулевого уровня
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, tr("Start the game from level zero."),
+                                  tr("Reset the current game and start playing again from level zero?"),
+                                QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        this->ui->fr_state->start_new_game();
+    };
 }
 
 
-void WMain::on_tb_InitScene_pressed()
-{
-    this->ui->fr_game->load_scene_in_frame();
-    gamestate->set_lifes(3);
-}
 
-
-void WMain::on_toolButton_pressed()
+void WMain::on_pushButton_pressed()
 {
-    gamestate->get_level_loader()->initialize_loader();
-    gamestate->get_level_loader()->load_level(0);
+    gamestate->start_level_number(
+                this->ui->comboBox->currentText().toInt()
+                );
 }
 

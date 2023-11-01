@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
     wsettings = new WSettings();
     wgameover = new WGameOver();
     wmain     = new WMain();
+    wwin      = new WWin();
     wmain->show();
     return a.exec();
 }

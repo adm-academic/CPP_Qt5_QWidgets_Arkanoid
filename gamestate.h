@@ -20,6 +20,8 @@ class GameState : public QFrame
 public:
     GameState(QWidget *parent = nullptr );
 
+    Level_Loader* get_level_loader();// возвращает объект-загрузчик уровней
+
     // сохраняет в прямом доступе приборы для отображения состояния игры
     void set_devices(QLabel* lb_score,   QLabel* lb_high_score,
                      QLabel* lb_level,   QLabel* lb_lifes,
@@ -46,27 +48,25 @@ public:
 
     void add_prize(Prize* prize);  // добавляет приз на экран прибора призов
 
-    void game_over(); // нужно вызывать при завершении игры!
+    void reset_devices(); // обнуляет приборы
 
-    void load_game(); /// !!!!!!!!!!!!!!!!!! загружает состояние сцены арканоида
-    void unload_game(); /// !!!!!!!!!!!!!!!!! выгружает состояние сцены арканоида
-
-    ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    Level_Loader* get_level_loader();
-    ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    void start_new_game(); // начинает новую игру
+    void game_over(); // завершает игру!
+    void start_level_number(int level_number); // начинает игру указанного уровня
+    void start_next_level(); // начинает следующий уровень
+    void game_win(); // игра пройдена и завершена победой!
 
     //------------------------------------------------------------------
     // все методы для проигрывания звуков вынесены в одно место
     void music_play_gaming();
-    void music_play_idle();
     void sound_play_ball_lost();
     void sound_play_ball_with_block();
     void sound_play_ball_with_border();
     void sound_play_ball_with_platform();
     void sound_play_prize_caught();
     void sound_play_game_over();
-    void sound_play_level_over();
-    void sound_play_level_begin();
+    void sound_play_game_win();
+    void sound_play_level_win();
     //-------------------------------------------------------------------
 
 protected:

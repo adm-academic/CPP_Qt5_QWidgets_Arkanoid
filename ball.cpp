@@ -146,10 +146,11 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
     // обрабатываем столкновения с блоками на игровом поле
     // для этого организуем цикл по всем блокам и с каждым блоком индивидуально
     // проверяем столкновения
-    for ( int y=0; y<gameframe->get_blocks_vector().count(); y++ ){
-        for ( int x=0; x<gameframe->get_blocks_vector()[0].count(); x++ ){
-
-            if (gameframe->get_blocks_vector()[y][x]!=nullptr ){
+    int y_count = gameframe->get_blocks_vector().count();
+    for ( int y=0; y<y_count; y++ ){
+        int x_count = gameframe->get_blocks_vector()[0].count();
+        for ( int x=0; x<x_count; x++ ){
+            if (gameframe->get_blocks_vector()[y][x]!=nullptr ){// на месте блока ненулевой указатель
                 // подготовим позиции очередного блока и шарика
                 int block_left = gameframe->get_blocks_vector()[y][x]->x();
                 int block_top  = gameframe->get_blocks_vector()[y][x]->y();
@@ -172,7 +173,11 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                         gamestate->add_score(25);
                         gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
-
+                        if ( gameframe->get_blocks_count()<=0 ){
+                            gameframe->process_level_finished();
+                            gamestate->start_next_level();
+                            return;
+                        };
                     }
                 }
                 // > пересечение справа блока
@@ -185,6 +190,11 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                         gamestate->add_score(25);
                         gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
+                        if ( gameframe->get_blocks_count()<=0 ){
+                            gameframe->process_level_finished();
+                            gamestate->start_next_level();
+                            return;
+                        };
                     }
                 }
                 // > пересечение сверху блока
@@ -197,6 +207,11 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                         gamestate->add_score(25);
                         gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
+                        if ( gameframe->get_blocks_count()<=0 ){
+                            gameframe->process_level_finished();
+                            gamestate->start_next_level();
+                            return;
+                        };
                     }
                 }
                 // > пересечение слева блока
@@ -209,11 +224,17 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                         gamestate->add_score(25);
                         gamestate->sound_play_ball_with_block();
                         gameframe->delete_block(y,x);
+                        if ( gameframe->get_blocks_count()<=0 ){
+                            gameframe->process_level_finished();
+                            gamestate->start_next_level();
+                            return;
+                        };
                     }
                 };
             }// закончен код коллизий с шарика с блоками
-            /// ! нужно улучшить обработку коллизий, так как шарик не !
-            /// ! всегда коректно отражается !
+            ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            /// нужно улучшить обработку коллизий, так как шарик
+            /// не всегда коректно отражается от препятствий
         } // end for x
     } // end for y
 }

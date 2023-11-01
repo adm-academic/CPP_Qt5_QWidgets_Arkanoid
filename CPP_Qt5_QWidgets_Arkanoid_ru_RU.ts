@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>GameFrame</name>
+    <message>
+        <location filename="gameframe.cpp" line="212"/>
+        <source>Level Completed!</source>
+        <translation>Уровень завершён!</translation>
+    </message>
+    <message>
+        <location filename="gameframe.cpp" line="213"/>
+        <source>You have completed the level !</source>
+        <translation>Вы завершили очредной уровень  игре Arkanoid!</translation>
+    </message>
+</context>
+<context>
     <name>WAbout</name>
     <message>
         <location filename="wabout.ui" line="14"/>
@@ -83,97 +96,143 @@ Try again!</oldsource>
         <translation type="vanished">Кнопка</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="33"/>
-        <location filename="wmain.ui" line="46"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="wmain.ui" line="113"/>
+        <location filename="wmain.ui" line="87"/>
         <source>ARKANOID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="147"/>
+        <location filename="wmain.ui" line="121"/>
         <source>SCORE</source>
         <translation>СЧЁТ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="205"/>
+        <location filename="wmain.ui" line="179"/>
         <source>HIGH SCORE</source>
         <translation>НАИВЫСШИЙ СЧЁТ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="263"/>
+        <location filename="wmain.ui" line="237"/>
         <source>LEVEL</source>
         <translation>УРОВЕНЬ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="293"/>
+        <location filename="wmain.ui" line="267"/>
+        <location filename="wmain.ui" line="389"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="315"/>
+        <location filename="wmain.ui" line="289"/>
         <source>LIFES</source>
         <translation>ЖИЗНИ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="180"/>
-        <location filename="wmain.ui" line="235"/>
+        <location filename="wmain.ui" line="154"/>
+        <location filename="wmain.ui" line="209"/>
+        <location filename="wmain.ui" line="384"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="345"/>
+        <location filename="wmain.ui" line="319"/>
+        <location filename="wmain.ui" line="399"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="367"/>
+        <location filename="wmain.ui" line="341"/>
         <source>ACTIVE PRIZES</source>
         <translation>АКТИВНЫЕ ПРИЗЫ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="412"/>
-        <source>File</source>
-        <translation>Файл</translation>
+        <location filename="wmain.ui" line="370"/>
+        <source>debug 0 level</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="429"/>
+        <location filename="wmain.ui" line="394"/>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="404"/>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="409"/>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="414"/>
+        <source>6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="419"/>
+        <source>7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="449"/>
+        <source>Game</source>
+        <translation>Игра</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="vanished">Файл</translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="467"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="448"/>
+        <location filename="wmain.ui" line="486"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="460"/>
+        <location filename="wmain.ui" line="498"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="465"/>
+        <location filename="wmain.ui" line="503"/>
         <source>Locale</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="470"/>
+        <location filename="wmain.ui" line="508"/>
         <location filename="wmain.cpp" line="65"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="475"/>
+        <location filename="wmain.ui" line="513"/>
         <source>Settings Window</source>
         <translation>Окно настроек игры</translation>
+    </message>
+    <message>
+        <location filename="wmain.ui" line="518"/>
+        <source>New Game</source>
+        <translation>Новая игра</translation>
     </message>
     <message>
         <location filename="wmain.cpp" line="65"/>
         <source>Quit?</source>
         <translation>Завершить?</translation>
+    </message>
+    <message>
+        <location filename="wmain.cpp" line="87"/>
+        <source>Start the game from level zero.</source>
+        <translation>Начать игру с нулевого уровня.</translation>
+    </message>
+    <message>
+        <location filename="wmain.cpp" line="88"/>
+        <source>Reset the current game and start playing again from level zero?</source>
+        <translation>Сбросить текущую игру и  начать играть заново с нулевого уровня?</translation>
     </message>
 </context>
 <context>
@@ -183,6 +242,14 @@ Try again!</oldsource>
         <source>Game Settings</source>
         <oldsource>Settings</oldsource>
         <translation>Настройки игры</translation>
+    </message>
+</context>
+<context>
+    <name>WWin</name>
+    <message>
+        <location filename="wwin.ui" line="14"/>
+        <source>Victory!</source>
+        <translation>Победа!</translation>
     </message>
 </context>
 </TS>

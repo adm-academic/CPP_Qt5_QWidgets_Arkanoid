@@ -38,12 +38,9 @@ private slots:
 
     void on_actionSettings_Window_triggered();
 
-    void on_tb_SceneClear_pressed();
+    void on_actionNew_Game_triggered();
 
-    void on_tb_InitScene_pressed();
-
-
-    void on_toolButton_pressed();
+    void on_pushButton_pressed();
 
 private:
     Ui::WMain *ui;
