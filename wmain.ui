@@ -449,6 +449,7 @@ color: rgb(255, 0, 0);</string>
      <string>Game</string>
     </property>
     <addaction name="actionNew_Game"/>
+    <addaction name="actionWins_Statistic"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -516,6 +517,11 @@ border-style: solid;
   <action name="actionNew_Game">
    <property name="text">
     <string>New Game</string>
+   </property>
+  </action>
+  <action name="actionWins_Statistic">
+   <property name="text">
+    <string>Wins Statistic</string>
    </property>
   </action>
  </widget>

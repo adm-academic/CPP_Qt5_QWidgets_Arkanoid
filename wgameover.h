@@ -2,6 +2,7 @@
 #define WGAMEOVER_H
 
 #include <QDialog>
+#include <QImage>
 
 namespace Ui {
 class WGameOver;
@@ -15,7 +16,9 @@ public:
     explicit WGameOver(QWidget *parent = nullptr);
     ~WGameOver();
 protected:
+    void paintEvent(QPaintEvent *event);
     void changeEvent(QEvent* pe);
+    QImage image;
 private:
     Ui::WGameOver *ui;
 };

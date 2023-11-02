@@ -36,6 +36,15 @@ QVector <QVector <Block*> > GameFrame::get_blocks_vector(){
     return this->blocks_pointers;
 }
 
+int  GameFrame::get_blocks_vector_max_width(){
+    int max_width = 0;
+    for (int row=0; row<this->blocks_pointers.count(); row++ ){
+        if ( this->blocks_pointers[row].count() > max_width )
+            max_width = this->blocks_pointers[row].count();
+    }
+    return max_width;
+}
+
 void  GameFrame::reinitialize_blocks_vector_size(int cols_x, int rows_y){
     // очистим двумерный вектор от данных и установим ему нулевой размер
     for (int row=0; row<this->blocks_pointers.count(); row++ ){
@@ -48,7 +57,7 @@ void  GameFrame::reinitialize_blocks_vector_size(int cols_x, int rows_y){
         // а вот размер сбросим
         this->blocks_pointers[row].resize(0);
     };
-    // здесь тоже сбосим размер до ноля
+    // здесь тоже сбросим размер до ноля
     this->blocks_pointers.resize(0);
 
 
@@ -74,10 +83,8 @@ void GameFrame::delete_block(int y_row, int x_col){
 void GameFrame::append_block(int y_row, int x_col){
     Block* blk = new Block(this); // создаём новый блок
 
-    // количество столбцов блоков по горизонтали.
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // НЕКРАСИВО! ПОДУМАТЬ КАК СДЕЛАТЬ ЛУЧШЕ!
-    int blocks_col_count = this->blocks_pointers[0].count();
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    int blocks_col_count = this->get_blocks_vector_max_width();
 
     // инициализируем блок
     blk->initialize_block( this->width(), blocks_col_count,

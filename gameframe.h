@@ -35,8 +35,9 @@ public:
     int  get_blocks_count(); // возвращает количество блоков на экране
     void process_level_finished(); // проверяет закончен уровень и переходит к следующему
                                              // все летящие призы на уровне исчезают
-    void reinitialize_blocks_vector_size(int cols_x, int rows_y); // пересоздаём векто, хранящий блоки
-    void delete_block(int y_row, int x_col); // удаляет объект-блок из вектора и записывает nullptr; 
+    void reinitialize_blocks_vector_size(int cols_x, int rows_y); // пересоздаём вектор, хранящий блоки
+    int  get_blocks_vector_max_width(); // возвращает максимальную ширину вектора блоков
+    void delete_block(int y_row, int x_col); // удаляет объект-блок из вектора и записывает nullptr;
     void append_block(int y_row, int x_col); // добавляет объект-блок в вектор, для начала одного
                                              // и того-же цвета, в дальнейшем нужно сделать
                                              // загрузку блока указанного цвета

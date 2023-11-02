@@ -152,7 +152,12 @@ void GameState::start_next_level(){
 
 void GameState::game_win(){
     this->sound_play_game_win();
+
     wwin->exec();
+    wscorestatistic->append_new_result(this->get_high_score(),this->get_score());
+    wscorestatistic->exec();
+
+
     gameframe->unload_game_scene();
 }
 

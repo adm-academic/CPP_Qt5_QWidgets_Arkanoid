@@ -4,12 +4,12 @@
 <context>
     <name>GameFrame</name>
     <message>
-        <location filename="gameframe.cpp" line="212"/>
+        <location filename="gameframe.cpp" line="223"/>
         <source>Level Completed!</source>
         <translation>Уровень завершён!</translation>
     </message>
     <message>
-        <location filename="gameframe.cpp" line="213"/>
+        <location filename="gameframe.cpp" line="224"/>
         <source>You have completed the level !</source>
         <translation>Вы завершили очредной уровень в игре Arkanoid!</translation>
     </message>
@@ -52,7 +52,7 @@ Autumn 2023 year.</oldsource>
         <translation>Игра закончена</translation>
     </message>
     <message>
-        <location filename="wgameover.ui" line="23"/>
+        <location filename="wgameover.ui" line="26"/>
         <source>Game Over! Try again!</source>
         <oldsource>Game Over! 
 Try again!</oldsource>
@@ -98,7 +98,7 @@ Try again!</oldsource>
     <message>
         <location filename="wmain.ui" line="87"/>
         <source>ARKANOID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="wmain.ui" line="121"/>
@@ -116,7 +116,6 @@ Try again!</oldsource>
         <translation>УРОВЕНЬ</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="267"/>
         <location filename="wmain.ui" line="389"/>
         <source>1</source>
         <translation type="unfinished"></translation>
@@ -129,6 +128,7 @@ Try again!</oldsource>
     <message>
         <location filename="wmain.ui" line="154"/>
         <location filename="wmain.ui" line="209"/>
+        <location filename="wmain.ui" line="267"/>
         <location filename="wmain.ui" line="384"/>
         <source>0</source>
         <translation type="unfinished"></translation>
@@ -180,59 +180,116 @@ Try again!</oldsource>
         <translation>Игра</translation>
     </message>
     <message>
+        <location filename="wmain.ui" line="524"/>
+        <source>Wins Statistic</source>
+        <translation>Статистика выигрышей</translation>
+    </message>
+    <message>
+        <source>Records</source>
+        <translation type="vanished">Рекорды</translation>
+    </message>
+    <message>
         <source>File</source>
         <translation type="vanished">Файл</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="467"/>
+        <location filename="wmain.ui" line="468"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="486"/>
+        <location filename="wmain.ui" line="487"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="498"/>
+        <location filename="wmain.ui" line="499"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="503"/>
+        <location filename="wmain.ui" line="504"/>
         <source>Locale</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="508"/>
-        <location filename="wmain.cpp" line="65"/>
+        <location filename="wmain.ui" line="509"/>
+        <location filename="wmain.cpp" line="77"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="513"/>
+        <location filename="wmain.ui" line="514"/>
         <source>Settings Window</source>
         <translation>Окно настроек игры</translation>
     </message>
     <message>
-        <location filename="wmain.ui" line="518"/>
+        <location filename="wmain.ui" line="519"/>
         <source>New Game</source>
         <translation>Новая игра</translation>
     </message>
     <message>
-        <location filename="wmain.cpp" line="65"/>
+        <location filename="wmain.cpp" line="77"/>
         <source>Quit?</source>
         <translation>Завершить?</translation>
     </message>
     <message>
-        <location filename="wmain.cpp" line="87"/>
+        <location filename="wmain.cpp" line="99"/>
         <source>Start the game from level zero.</source>
         <translation>Начать игру с нулевого уровня.</translation>
     </message>
     <message>
-        <location filename="wmain.cpp" line="88"/>
+        <location filename="wmain.cpp" line="100"/>
         <source>Reset the current game and start playing again from level zero?</source>
         <translation>Сбросить текущую игру и  начать играть заново с нулевого уровня?</translation>
+    </message>
+</context>
+<context>
+    <name>WRecords</name>
+    <message>
+        <source>Records</source>
+        <translation type="vanished">Рекорды</translation>
+    </message>
+    <message>
+        <source>Test</source>
+        <translation type="vanished">Тесты</translation>
+    </message>
+</context>
+<context>
+    <name>WScoreStatistic</name>
+    <message>
+        <location filename="wscorestatistic.ui" line="14"/>
+        <source>Win Statistic</source>
+        <translation>Статистика выигрышей</translation>
+    </message>
+    <message>
+        <source>Test</source>
+        <translation type="obsolete">Тесты</translation>
+    </message>
+    <message>
+        <location filename="wscorestatistic.cpp" line="62"/>
+        <source>Gamer Name</source>
+        <translation>Имя Игрока</translation>
+    </message>
+    <message>
+        <location filename="wscorestatistic.cpp" line="62"/>
+        <source>*High Score*</source>
+        <translation>Высший счёт.</translation>
+    </message>
+    <message>
+        <location filename="wscorestatistic.cpp" line="62"/>
+        <source>Win Score</source>
+        <translation>Счёт в последнем уровне</translation>
+    </message>
+    <message>
+        <location filename="wscorestatistic.cpp" line="93"/>
+        <source>Input Gamer Name For Save your Score.</source>
+        <translation>Введите имя игрока для соханения своего счёта.</translation>
+    </message>
+    <message>
+        <location filename="wscorestatistic.cpp" line="94"/>
+        <source>Gamer Name:</source>
+        <translation>Имя Игрока:</translation>
     </message>
 </context>
 <context>
@@ -250,6 +307,11 @@ Try again!</oldsource>
         <location filename="wwin.ui" line="14"/>
         <source>Victory!</source>
         <translation>Победа!</translation>
+    </message>
+    <message>
+        <location filename="wwin.ui" line="26"/>
+        <source>You win in this Arkanoid Game</source>
+        <translation>Вы победили в этой игре Arkanoid!</translation>
     </message>
 </context>
 </TS>

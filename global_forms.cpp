@@ -8,3 +8,5 @@ WAbout*     wabout;
 WSettings*  wsettings;
 WGameOver*  wgameover;
 WWin*       wwin;
+WScoreStatistic*
+            wscorestatistic;

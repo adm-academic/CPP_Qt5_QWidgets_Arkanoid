@@ -40,8 +40,9 @@ int main(int argc, char *argv[])
     wabout    = new WAbout();
     wsettings = new WSettings();
     wgameover = new WGameOver();
-    wmain     = new WMain();
+    wscorestatistic  = new WScoreStatistic();
     wwin      = new WWin();
+    wmain     = new WMain();
     wmain->show();
     return a.exec();
 }

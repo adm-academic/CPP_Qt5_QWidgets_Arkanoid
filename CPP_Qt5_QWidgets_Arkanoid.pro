@@ -1,4 +1,4 @@
-QT       += core gui multimedia
+QT       += core gui multimedia sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,6 +38,7 @@ SOURCES += \
     wgameover.cpp \
     wlanguage.cpp \
     wmain.cpp \
+    wscorestatistic.cpp \
     wsettings.cpp \
     wwin.cpp
 
@@ -68,6 +69,7 @@ HEADERS += \
     wgameover.h \
     wlanguage.h \
     wmain.h \
+    wscorestatistic.h \
     wsettings.h \
     wwin.h
 
@@ -76,6 +78,7 @@ FORMS += \
     wgameover.ui \
     wlanguage.ui \
     wmain.ui \
+    wscorestatistic.ui \
     wsettings.ui \
     wwin.ui
 
@@ -91,7 +94,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     TODO.txt \
-    settings.conf
+    settings.conf \
+    styles/black.qss \
+    wins_statistic.db \
+    wins_statitic.sql
 
 RESOURCES += \
     resources.qrc

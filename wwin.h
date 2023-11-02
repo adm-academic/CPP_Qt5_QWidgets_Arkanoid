@@ -2,6 +2,7 @@
 #define WWIN_H
 
 #include <QDialog>
+#include <QImage>
 
 namespace Ui {
 class WWin;
@@ -15,6 +16,11 @@ public:
     explicit WWin(QWidget *parent = nullptr);
     ~WWin();
 
+
+protected:
+    void paintEvent(QPaintEvent *event);
+    void changeEvent(QEvent* pe);
+    QImage image;
 private:
     Ui::WWin *ui;
 };

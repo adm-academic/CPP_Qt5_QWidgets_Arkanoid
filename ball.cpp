@@ -148,7 +148,7 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
     // проверяем столкновения
     int y_count = gameframe->get_blocks_vector().count();
     for ( int y=0; y<y_count; y++ ){
-        int x_count = gameframe->get_blocks_vector()[0].count();
+        int x_count = gameframe->get_blocks_vector()[y].count();
         for ( int x=0; x<x_count; x++ ){
             if (gameframe->get_blocks_vector()[y][x]!=nullptr ){// на месте блока ненулевой указатель
                 // подготовим позиции очередного блока и шарика

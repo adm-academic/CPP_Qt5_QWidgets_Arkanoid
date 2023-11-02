@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>510</width>
-    <height>230</height>
+    <width>717</width>
+    <height>478</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,10 @@
    <item>
     <widget class="QLabel" name="lb_gameover">
      <property name="styleSheet">
-      <string notr="true">font: 20pt ;</string>
+      <string notr="true">font: 24pt ;
+
+font-weight: bold;
+color: rgb(255, 0, 27);</string>
      </property>
      <property name="text">
       <string>Game Over! Try again!</string>

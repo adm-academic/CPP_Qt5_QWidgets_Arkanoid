@@ -105,11 +105,17 @@ void WMain::on_actionNew_Game_triggered()
 }
 
 
-
 void WMain::on_pushButton_pressed()
 {
     gamestate->start_level_number(
                 this->ui->comboBox->currentText().toInt()
                 );
+}
+
+
+
+void WMain::on_actionWins_Statistic_triggered()
+{
+    wscorestatistic->exec();
 }
 

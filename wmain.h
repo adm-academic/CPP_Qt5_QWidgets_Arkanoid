@@ -45,6 +45,8 @@ private slots:
 
     void on_pushButton_pressed();
 
+    void on_actionWins_Statistic_triggered();
+
 private:
     Ui::WMain *ui;
 };
