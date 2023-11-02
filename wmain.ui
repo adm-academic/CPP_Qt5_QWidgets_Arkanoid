@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1193</width>
+    <width>1024</width>
     <height>684</height>
    </rect>
   </property>
@@ -23,10 +23,10 @@
    <widget class="GameFrame" name="fr_game">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>10</y>
-      <width>800</width>
-      <height>600</height>
+      <x>10</x>
+      <y>0</y>
+      <width>721</width>
+      <height>611</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -42,9 +42,9 @@
    <widget class="GameState" name="fr_state">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>10</y>
-      <width>291</width>
+      <x>740</x>
+      <y>0</y>
+      <width>281</width>
       <height>617</height>
      </rect>
     </property>
@@ -112,7 +112,7 @@ color: rgb(7, 120, 253);
        <item>
         <widget class="QLabel" name="lb_ScoreCaption">
          <property name="styleSheet">
-          <string notr="true">font: 16pt &quot;Practice-font&quot;;
+          <string notr="true">font: 15pt &quot;Practice-font&quot;;
 color: rgb(255, 160, 0);
 color: rgb(255, 0, 0);
 </string>
@@ -171,7 +171,7 @@ color :  rgb(2, 250, 3);
        <item>
         <widget class="QLabel" name="lb_HighScoreCaption">
          <property name="styleSheet">
-          <string notr="true">font: 16pt &quot;Practice-font&quot;;
+          <string notr="true">font: 15pt &quot;Practice-font&quot;;
 color: rgb(255, 160, 0);
 color: rgb(255, 0, 0);</string>
          </property>
@@ -229,7 +229,7 @@ color :  rgb(2, 250, 3);
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">font: 16pt &quot;Practice-font&quot;;
+          <string notr="true">font: 15pt &quot;Practice-font&quot;;
 color: rgb(255, 160, 0);
 color: rgb(255, 0, 0);</string>
          </property>
@@ -281,7 +281,7 @@ color :  rgb(2, 250, 3);
        <item>
         <widget class="QLabel" name="lb_LifesCaption">
          <property name="styleSheet">
-          <string notr="true">font: 16pt &quot;Practice-font&quot;;
+          <string notr="true">font: 15pt &quot;Practice-font&quot;;
 color: rgb(255, 160, 0);
 color: rgb(255, 0, 0);</string>
          </property>
@@ -333,7 +333,7 @@ color :  rgb(2, 250, 3);
        <item>
         <widget class="QLabel" name="lb_ActivePrizesCaption">
          <property name="styleSheet">
-          <string notr="true">font: 16pt &quot;Practice-font&quot;;
+          <string notr="true">font: 15pt &quot;Practice-font&quot;;
 color: rgb(255, 160, 0);
 color: rgb(255, 0, 0);</string>
          </property>
@@ -426,7 +426,7 @@ color: rgb(255, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1193</width>
+     <width>1024</width>
      <height>34</height>
     </rect>
    </property>
