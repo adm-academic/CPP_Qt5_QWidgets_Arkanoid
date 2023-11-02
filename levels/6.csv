@@ -1,8 +1,16 @@
-LevelFileVersion,1,,,,,,,,
-LevelNameEn,Flying past Saturn,,,,,,,,
-LevelNameRu,Туманность Улитка,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-gray,gray,gray,gray,gray,gray,gray,gray,gray,gray
+LevelFileVersion,1,,,,,,,,,,
+LevelNameEn,«Helix» Nebula,,,,,,,,,,
+LevelNameRu,Туманность Улитка,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+green,green,green,green,green,green,green,green,green,green,green,green
+green,,,,,,,,,,,green
+green,,green,green,green,green,green,green,green,green,,green
+green,,green,,,,,,,green,,green
+green,,green,,green,green,green,green,,green,,green
+green,,green,,green,green,green,green,,green,,green
+green,,green,,,,,,,green,,green
+green,,green,green,green,green,green,green,green,green,,green
+green,,,,,,,,,,,green
+green,green,green,green,green,green,green,green,green,green,green,green
