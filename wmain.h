@@ -26,6 +26,8 @@ public:
     void show_level_info(LevelInfo level_info);
 
 protected:
+    QString level_locality;
+    void paintEvent(QPaintEvent *event);
     void changeEvent(QEvent* pe);
     void resizeEvent( QResizeEvent *event );
 

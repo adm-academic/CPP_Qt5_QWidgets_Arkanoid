@@ -32,14 +32,18 @@ WMain::WMain(QWidget *parent)
 
 // метод для вывода информации о текущем уровне
 void WMain::show_level_info(LevelInfo level_info){
-    QString level_locality;
     if ( app_settings.application_locale_get()=="en_US" ){
-        level_locality = level_info.LevelNameEn;
+        this->level_locality = level_info.LevelNameEn;
     }
     else if ( app_settings.application_locale_get()=="ru_RU" ) {
-        level_locality = level_info.LevelNameRu;
+        this->level_locality = level_info.LevelNameRu;
     };
-    this->ui->statusbar->showMessage( level_locality );
+    this->ui->statusbar->showMessage( this->level_locality );
+}
+
+
+void WMain::paintEvent(QPaintEvent *event){
+    this->ui->statusbar->showMessage( this->level_locality );
 }
 
 WMain::~WMain()
@@ -107,9 +111,9 @@ void WMain::on_actionNew_Game_triggered()
 
 void WMain::on_pushButton_pressed()
 {
-    gamestate->start_level_number(
-                this->ui->comboBox->currentText().toInt()
-                );
+    //gamestate->start_level_number(
+    //            this->ui->comboBox->currentText().toInt()
+    //           );
 }
 
 

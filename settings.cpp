@@ -45,6 +45,8 @@ void Settings::find_basedir_and_changedir(){
         return;
     if ( fileExists("../CPP_Qt5_QWidgets_Arkanoid/settings.conf") )
         QDir::setCurrent ( "../CPP_Qt5_QWidgets_Arkanoid/" );
+    if ( fileExists("../../CPP_Qt5_QWidgets_Arkanoid/settings.conf") )
+            QDir::setCurrent ( "../../CPP_Qt5_QWidgets_Arkanoid/" );
 }
 
 

@@ -88,9 +88,10 @@ bool Level_Loader::load_level_in_gameframe(int level_index){
     // прочитаем данные из CSV-файла и разобъём их по ячейкам
     QList<QStringList> data;
     QTextStream stream( &file );
+    stream.setCodec("UTF-8");
     while (!stream. atEnd())
     {
-        QString line = stream. readLine();
+        QString line = stream.readLine();
         QStringList row = line.split(',');
         data.append(row);
     }
