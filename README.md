@@ -14,4 +14,15 @@
  Ещё момент - я "расплодил" много файлов и классов. Но это лишь потому что пишу на Qt5, и он фактически является "движком" для этой игры.
  
  Как ясно из названия репозитория "CPP_Qt5_QWidgets_Arkanoid" эта версия игры написана с исползованием технологии QWidgets. 
-В дальнейшем я планирую сделать такой-же Арканоид с теми-же медиа-файлами и офомлением но с использованием QGraphicsView и QGraphicsScene. Это специальный движок от авторов Qt отдельно присособленный для задач похожих на игры. Это к вопросу об использованных технологиях.
+В дальнейшем я планирую сделать такой-же Арканоид с теми-же медиафайлами и офомлением но с использованием QGraphicsView и QGraphicsScene. Это специальный движок от авторов Qt отдельно присособленный для задач похожих на игры. Это к вопросу об использованных технологиях.
+
+![alt text](https://github.com/adm-academic/CPP_Qt5_QWidgets_Arkanoid/blob/main/screenshots/1.jpg?raw=true)
+
+![alt text](https://github.com/adm-academic/CPP_Qt5_QWidgets_Arkanoid/blob/main/screenshots/2.jpg?raw=true)
+
+![alt text](https://github.com/adm-academic/CPP_Qt5_QWidgets_Arkanoid/blob/main/screenshots/3.jpg?raw=true)
+
+
+
+
+
