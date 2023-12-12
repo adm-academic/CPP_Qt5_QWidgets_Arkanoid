@@ -91,7 +91,7 @@ void Device_Prizes_List::add_prize(Prize* prize){
     bool found = false;
     foreach (Prize* prize_item, this->active_prizes)
     {
-        if ( prize_item->get_class_id() == prize->get_class_id() ){
+        if ( prize_item->get_class_name() == prize->get_class_name() ){
             found = true;
             prize_item->reset_timeout();
             break;
@@ -126,7 +126,7 @@ bool Device_Prizes_List::alreay_contains_similar_prize(Prize* prize){
     bool found = false;
     foreach (Prize* prize_item, this->active_prizes)
     {
-        if ( prize_item->get_class_id() == prize->get_class_id() ){
+        if ( prize_item->get_class_name() == prize->get_class_name() ){
             found = true;
             break;
         }

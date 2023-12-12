@@ -330,8 +330,8 @@ void GameFrame::paint_frame() {
 }
 
 void GameFrame::create_random_prize_at(int x, int y){
-    int random_prize_creation = QRandomGenerator::global()->bounded( 1, 3+1 );
-    if ( random_prize_creation ==1 ) return; // обеспечиваем редкое выпадение призов
+    int random_prize_creation = 1; // QRandomGenerator::global()->bounded( 1, 3+1 );
+    if ( random_prize_creation !=1 ) return; // обеспечиваем редкое выпадение призов
 
     int prizes_classes_count = 9;
     int random_prize_selector = QRandomGenerator::global()->bounded( 1,

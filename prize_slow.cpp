@@ -10,9 +10,6 @@ bool Prize_Slow::with_expiration_time(){
     return true;
 }
 
-QString Prize_Slow::get_class_id(){
-    return "Slow";
-}
 
 void Prize_Slow::expand_game_mechanics(){
     this->saved_deltha = gameframe->get_ball()->get_default_deltha();

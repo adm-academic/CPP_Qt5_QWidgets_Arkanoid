@@ -4,6 +4,7 @@
 #include <QFrame>
 #include <QMessageBox>
 #include <QFontDatabase>
+#include <QApplication>
 #include "block.h"
 #include "wmain.h"
 #include "ui_wmain.h"
@@ -121,5 +122,11 @@ void WMain::on_pushButton_pressed()
 void WMain::on_actionWins_Statistic_triggered()
 {
     wscorestatistic->exec();
+}
+
+
+void WMain::on_actionAbout_Qt_triggered()
+{
+    QApplication::aboutQt();
 }
 

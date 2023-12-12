@@ -23,7 +23,7 @@ public:
     virtual bool get_drawing_progress(); // получаем настройку отрисовки прогрессбара
 
     virtual bool with_expiration_time(); // истина если объект поддерживает таймаут действия
-    virtual QString get_class_id(); // возвращает текстовый идентификато класса
+    virtual QString get_class_name(); // возвращает текстовый идентификатор класса
 
     virtual void expand_game_mechanics();// Расширяет игровую механику
     virtual void revert_game_mechanics();// Возвращает  назад игровую механику

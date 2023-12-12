@@ -12,7 +12,6 @@ public:
     Prize_Score100(QWidget *parent = nullptr);
 
     bool with_expiration_time(); // истина если объект поддерживает таймаут действия
-    QString get_class_id(); // возвращает текстовый идентификатор класса
 
     void single_action_of_a_prize();// Добавляет приз в игру, к примеру жизнь или очки
 

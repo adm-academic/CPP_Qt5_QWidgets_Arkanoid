@@ -12,9 +12,6 @@ bool Prize_Score50::with_expiration_time(){
     return false;
 }
 
-QString Prize_Score50::get_class_id(){
-    return "Score50";
-}
 
 void Prize_Score50::single_action_of_a_prize(){
     gamestate->add_score( 50 );

@@ -92,8 +92,9 @@ bool Prize::with_expiration_time(){
     return true;
 }
 
-QString Prize::get_class_id(){
-    return "Abstract";
+QString Prize::get_class_name(){
+    return this->metaObject()->className();
+
 }
 
 void Prize::expand_game_mechanics(){//по умолчанию приз не оказывает никакого дейстия на игру

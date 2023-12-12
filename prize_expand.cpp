@@ -17,9 +17,6 @@ bool Prize_Expand::with_expiration_time(){
     return true;
 }
 
-QString Prize_Expand::get_class_id(){
-    return "Expand";
-}
 
 void Prize_Expand::expand_game_mechanics(){
     this->stored_width = gameframe->get_platform()->get_width();

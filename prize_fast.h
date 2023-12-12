@@ -11,7 +11,6 @@ class Prize_Fast : public Prize
 public:
     Prize_Fast(QWidget *parent = nullptr);
     bool with_expiration_time(); // истина если объект поддерживает таймаут действия
-    QString get_class_id(); // возвращает текстовый идентификато класса
 
     void expand_game_mechanics();// Расширяет игровую механику
     void revert_game_mechanics();// Возвращает  назад игровую механику
