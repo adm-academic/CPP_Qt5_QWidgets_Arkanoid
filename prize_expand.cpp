@@ -18,29 +18,7 @@ bool Prize_Expand::with_expiration_time(){
     return true;
 }
 
-
-void Prize_Expand::expand_game_mechanics(){
-    this->stored_width = gameframe->get_platform()->get_width();
-    gameframe->get_platform()->set_width( gameframe->get_platform()->get_width() * 2 );
-
-    this->stored_original_image = gameframe->get_platform()->get_image();
-    this->stored_prize_image = new QImage("images/platform_expanding.png");
-
-    gameframe->get_platform()->set_image( this->stored_prize_image );
-}
-
-void Prize_Expand::revert_game_mechanics(){
-    gameframe->get_platform()->set_width( this->stored_width );
-    gameframe->get_platform()->set_image( this->stored_original_image );
-    if ( this->stored_prize_image != nullptr ){
-        delete this->stored_prize_image;
-        this->stored_prize_image = nullptr;
-    };
-}
-
-void Prize_Expand::single_action_of_a_prize(){
-
-}
+//----------------------------------------------------------------------------------
 
 bool State_Prize_Expand::have_single_action()
 {

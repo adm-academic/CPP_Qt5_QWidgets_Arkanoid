@@ -13,10 +13,7 @@ bool Prize_Score50::with_expiration_time(){
     return false;
 }
 
-
-void Prize_Score50::single_action_of_a_prize(){
-    gamestate->add_score( 50 );
-}
+//----------------------------------------------------------------------------------
 
 bool State_Prize_Score50::have_single_action()
 {

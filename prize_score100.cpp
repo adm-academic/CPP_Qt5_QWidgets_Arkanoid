@@ -14,10 +14,7 @@ bool Prize_Score100::with_expiration_time(){
 }
 
 
-void Prize_Score100::single_action_of_a_prize(){
-    gamestate->add_score( 100 );
-}
-
+//----------------------------------------------------------------------------------
 bool State_Prize_Score100::have_single_action()
 {
     return true;

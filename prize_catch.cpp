@@ -20,17 +20,7 @@ bool Prize_Catch::with_expiration_time(){
 }
 
 
-void Prize_Catch::expand_game_mechanics(){
-    gameframe->get_ball()->set_ball_must_be_caught(true);
-}
-
-void Prize_Catch::revert_game_mechanics(){
-    gameframe->get_ball()->set_ball_must_be_caught(false);
-}
-
-void Prize_Catch::single_action_of_a_prize(){
-
-}
+//----------------------------------------------------------------------------------
 
 bool State_Prize_Catch::have_single_action()
 {

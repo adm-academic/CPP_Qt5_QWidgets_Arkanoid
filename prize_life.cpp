@@ -17,11 +17,7 @@ bool Prize_Life::with_expiration_time(){
     return false;
 }
 
-
-void Prize_Life::single_action_of_a_prize(){
-    gamestate->add_lifes( 1 );
-}
-
+//----------------------------------------------------------------------------------
 bool State_Prize_Life::have_single_action()
 {
     return true;

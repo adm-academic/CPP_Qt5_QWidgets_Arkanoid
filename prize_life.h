@@ -27,12 +27,6 @@ public:
 
     bool with_expiration_time(); // истина если объект поддерживает таймаут действия
 
-    void single_action_of_a_prize();// Добавляет приз в игру, к примеру жизнь или очки
-
-
-protected:
-
-
 };
 
 #endif // PRIZE_LIFE_H

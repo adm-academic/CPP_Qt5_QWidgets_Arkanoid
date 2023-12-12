@@ -32,10 +32,6 @@ public:
 
     bool with_expiration_time(); // истина если объект поддерживает таймаут действия
 
-    void expand_game_mechanics();// Расширяет игровую механику
-    void revert_game_mechanics();// Возвращает  назад игровую механику
-private:
-    int saved_deltha = 0;
 };
 
 #endif // PRIZE_SLOW_H
