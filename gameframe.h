@@ -10,9 +10,8 @@
 #include <QEvent>
 #include <QTimer>
 #include <QImage>
+
 #include "device_prizes_list.h"
-
-
 #include "block.h"
 #include "ball.h"
 #include "prize.h"
@@ -66,7 +65,7 @@ private:
     void initialize_ball();// инициализирует шарик
     void deinitialize_platform();// выгружает платформу
     void deinitialize_ball();// выгружает шарик
-    void paint_frame(); // рисует рамку вокруг игрового поля
+    void paint_bounding_game_frame(); // рисует рамку вокруг игрового поля
     void delete_all_flying_prizes(); // удаляет все падающие в данный момент призы
 
 

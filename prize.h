@@ -3,6 +3,7 @@
 #define PRIZE_H
 
 #include <QWidget>
+#include "arkanoid_state.h"
 
 
 class Prize : public QWidget
@@ -10,6 +11,7 @@ class Prize : public QWidget
     Q_OBJECT
 public:
     explicit Prize(QWidget *parent = nullptr );
+    virtual  ~Prize();
 
     virtual void  set_timeout_seconds(uint timeout_value); // устанавливает
                         // таймаут жизни для объекта приза
@@ -29,6 +31,8 @@ public:
     virtual void revert_game_mechanics();// Возвращает  назад игровую механику
     virtual void single_action_of_a_prize();// Один раз вносит модификацию  игру
 
+    virtual Arkanoid_State* get_arkanoid_state();
+
 
 protected:
 
@@ -43,6 +47,8 @@ protected:
 
     void paintEvent(QPaintEvent *event); // метод в котором мы отрисовываем виджет
     virtual void draw_progress(QPainter &painter); // метод в котором мы отрисовываем прогрессбар
+
+    Arkanoid_State* arkanoid_state = nullptr;
 
 signals:
 };

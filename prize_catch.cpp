@@ -10,6 +10,7 @@ Prize_Catch::Prize_Catch(QWidget *parent)
     : Prize{parent}
 {
     this->image.load("images/prize_catch.png");
+    this->arkanoid_state = new State_Prize_Catch();
 }
 
 
@@ -29,4 +30,29 @@ void Prize_Catch::revert_game_mechanics(){
 
 void Prize_Catch::single_action_of_a_prize(){
 
+}
+
+bool State_Prize_Catch::have_single_action()
+{
+    return false;
+}
+
+void State_Prize_Catch::action_enter()
+{
+    gameframe->get_ball()->set_ball_must_be_caught(true);
+}
+
+void State_Prize_Catch::action_update()
+{
+    
+}
+
+void State_Prize_Catch::action_repaint()
+{
+    
+}
+
+void State_Prize_Catch::action_exit()
+{
+    gameframe->get_ball()->set_ball_must_be_caught(false);
 }

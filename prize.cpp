@@ -12,7 +12,12 @@ Prize::Prize(QWidget *parent)
     this->show();
 }
 
-
+Prize::~Prize(){
+    if ( this->arkanoid_state == nullptr )
+        return;
+    delete this->arkanoid_state;
+    this->arkanoid_state = nullptr;
+}
 
 void Prize::set_timeout_seconds(uint timeout_value){
     this->timeout_seconds = timeout_value;
@@ -108,3 +113,10 @@ void Prize::revert_game_mechanics(){//по умолчанию приз не ок
 void Prize::single_action_of_a_prize(){//по умолчанию приз не оказывает никакого дейстия на игру
 
 }
+
+Arkanoid_State* Prize::get_arkanoid_state()
+{
+    return this->arkanoid_state;
+}
+
+

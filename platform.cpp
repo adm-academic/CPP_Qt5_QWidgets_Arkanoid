@@ -75,3 +75,8 @@ QImage* Platform::get_image(){
 void    Platform::set_image(QImage* img){
     this->image = img;
 }
+
+void Platform::process_platform_states()
+{
+    qDebug() << "!!!!!!!!!!!!!!!!!!" << " PROCESS PLATFORM STATES";
+}

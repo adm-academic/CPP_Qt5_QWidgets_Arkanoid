@@ -4,7 +4,20 @@
 
 #include "prize.h"
 #include <QWidget>
+#include "arkanoid_state.h"
 
+// Шаблон "State"...
+class State_Prize_Life : public Arkanoid_State{
+    Q_OBJECT
+
+protected:
+protected slots:
+signals:
+
+public:
+    bool have_single_action();
+    void single_action();
+};
 
 class Prize_Life : public Prize
 {

@@ -30,7 +30,8 @@ void Device_Prizes_List::slot_prizes_timer(){
             this->active_prizes.removeAt(
             this->active_prizes.indexOf( prize_item ) );// теперь удалим ссылку на
                                    // объект приза из списка где он хранился
-            prize_item->revert_game_mechanics(); // вызовем код уборки действия приза
+            prize_item->get_arkanoid_state()->action_exit();// !!!!!!!!!!!
+                                                 // вызовем код уборки действия приза
                                                  // вернём назад игровую механику
             delete prize_item; // удалим объект приза чтобы не убегала память
             this->arrange_and_show_prizes();     // если был удалён хотя-бы
@@ -79,7 +80,7 @@ void Device_Prizes_List::add_prize(Prize* prize){
     if ( ! prize->with_expiration_time() ){
         // если этот приз не поддерживает истечение срока действия то удалим его объект
         // и выйдем из метода
-        prize->single_action_of_a_prize(); // вызовем единичный обработчик для этого приза
+        prize->get_arkanoid_state()->single_action(); // вызовем единичный обработчик для этого приза
         prize->hide(); // скроем приз
         delete prize; // удалим приз
         return; // выйдем из метода
@@ -106,8 +107,8 @@ void Device_Prizes_List::add_prize(Prize* prize){
         prize->setParent(this); // добавляем приз в прибор
         this->active_prizes.append(prize); // добавим приз в список призов
         this->arrange_and_show_prizes(); // перестроим и отобразим весь список виджетов
-        prize->expand_game_mechanics(); // расширим игровую механику с помощью
-                                        // этого приза
+        prize->get_arkanoid_state()->action_enter(); // !!!!! расширим игровую механику с помощью
+                                                     // этого приза
     };
 }
 
