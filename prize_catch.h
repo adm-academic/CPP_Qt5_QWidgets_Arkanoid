@@ -15,7 +15,7 @@ protected slots:
 signals:
 
 public:
-    bool have_single_action();
+    bool have_action_single();
     void action_enter();
     void action_update();
     void action_repaint();

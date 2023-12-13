@@ -22,7 +22,7 @@ bool Prize_Catch::with_expiration_time(){
 
 //----------------------------------------------------------------------------------
 
-bool State_Prize_Catch::have_single_action()
+bool State_Prize_Catch::have_action_single()
 {
     return false;
 }

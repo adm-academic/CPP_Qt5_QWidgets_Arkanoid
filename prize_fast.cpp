@@ -5,6 +5,8 @@ Prize_Fast::Prize_Fast(QWidget *parent)
     : Prize{parent}{
     this->image.load("images/prize_fast.png");
     this->arkanoid_state = new State_Prize_Fast();
+
+    this->antagonists_classnames << "Prize_Slow";
 }
 
 bool Prize_Fast::with_expiration_time(){
@@ -13,7 +15,7 @@ bool Prize_Fast::with_expiration_time(){
 
 //----------------------------------------------------------------------------------
 
-bool State_Prize_Fast::have_single_action()
+bool State_Prize_Fast::have_action_single()
 {
     return false;
 }

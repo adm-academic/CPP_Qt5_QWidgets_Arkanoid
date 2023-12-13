@@ -20,7 +20,7 @@ bool Prize_Expand::with_expiration_time(){
 
 //----------------------------------------------------------------------------------
 
-bool State_Prize_Expand::have_single_action()
+bool State_Prize_Expand::have_action_single()
 {
     return false;
 }

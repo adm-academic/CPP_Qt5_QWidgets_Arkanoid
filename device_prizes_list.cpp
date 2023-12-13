@@ -30,7 +30,7 @@ void Device_Prizes_List::slot_prizes_timer(){
             this->active_prizes.removeAt(
             this->active_prizes.indexOf( prize_item ) );// теперь удалим ссылку на
                                    // объект приза из списка где он хранился
-            prize_item->get_arkanoid_state()->action_exit();// !!!!!!!!!!!
+            prize_item->get_arkanoid_state()->action_exit();///!!!!!!!!!!!
                                                  // вызовем код уборки действия приза
                                                  // вернём назад игровую механику
             delete prize_item; // удалим объект приза чтобы не убегала память
@@ -73,18 +73,35 @@ void Device_Prizes_List::arrange_and_show_prizes(){ // отображает сп
     }
 }
 
-void Device_Prizes_List::add_prize(Prize* prize){
+void Device_Prizes_List::check_and_add_prize(Prize* prize){
     if ( this->active_prizes.contains(prize) ) return; // если прибор уже содержит
                                                        // этот объект приза то просто
                                                        // выходим из метода
     if ( ! prize->with_expiration_time() ){
         // если этот приз не поддерживает истечение срока действия то удалим его объект
         // и выйдем из метода
-        prize->get_arkanoid_state()->single_action(); // вызовем единичный обработчик для этого приза
+        prize->get_arkanoid_state()->action_single(); // вызовем единичный обработчик для этого приза
         prize->hide(); // скроем приз
         delete prize; // удалим приз
         return; // выйдем из метода
     };
+
+    // Удалим из прибора всех антагонистов переданного приза используя рефлексию Qt
+    foreach (Prize* prize_item_in_device, this->active_prizes)
+    {
+        foreach ( QString antagonist_name, prize->antagonists_classnames ){
+            if ( prize_item_in_device->metaObject()->className() == antagonist_name ){
+                this->active_prizes.removeAt(
+                this->active_prizes.indexOf( prize_item_in_device ) );// удалим ссылку на объект
+                                                        //приза-антагониста из списка где он хранился
+                prize_item_in_device->get_arkanoid_state()->action_exit();///!!!!!!!!!!!
+                                                              // вызовем код уборки действия приза
+                                                              // вернём назад игровую механику
+                delete prize_item_in_device; // удалим сам объект приза-антагониста
+            };
+        };
+    };
+
 
     // поищем такой-же приз в приборе
     // если прибор уже содержит объект этого класса - то выставляем флаг
@@ -123,7 +140,7 @@ void Device_Prizes_List::clear_prizes(){
 
 bool Device_Prizes_List::alreay_contains_similar_prize(Prize* prize){
     // поищем такой-же приз в приборе
-    // если прибор уже содержит объект этого класса - то выставляем флагbool found = false;
+    // если прибор уже содержит объект этого класса - то выставляем флаг bool found = false;
     bool found = false;
     foreach (Prize* prize_item, this->active_prizes)
     {

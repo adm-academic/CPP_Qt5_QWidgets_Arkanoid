@@ -15,12 +15,12 @@ bool Prize_Score250::with_expiration_time(){
 
 //----------------------------------------------------------------------------------
 
-bool State_Prize_Score250::have_single_action()
+bool State_Prize_Score250::have_action_single()
 {
     return true;
 }
 
-void State_Prize_Score250::single_action()
+void State_Prize_Score250::action_single()
 {
     gamestate->add_score( 250 );
 }

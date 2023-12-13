@@ -3,6 +3,7 @@
 #define PRIZE_H
 
 #include <QWidget>
+#include <QList>
 #include "arkanoid_state.h"
 
 
@@ -33,6 +34,9 @@ public:
 
     virtual Arkanoid_State* get_arkanoid_state();
 
+    QList<QString> antagonists_classnames; // хранит список имён классов объектов-антагонистов к текущему.
+                                           // это нужно для удаления всех несовместимых (антогонистов)
+                                           // объектов когда пойман новый приз
 
 protected:
 
@@ -48,7 +52,7 @@ protected:
     void paintEvent(QPaintEvent *event); // метод в котором мы отрисовываем виджет
     virtual void draw_progress(QPainter &painter); // метод в котором мы отрисовываем прогрессбар
 
-    Arkanoid_State* arkanoid_state = nullptr;
+    Arkanoid_State* arkanoid_state = nullptr; // хранит шаблонный объект-состояние или его наследников
 
 signals:
 };

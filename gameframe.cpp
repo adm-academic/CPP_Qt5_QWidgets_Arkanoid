@@ -382,7 +382,7 @@ void GameFrame::delete_all_flying_prizes(){
     };
 }
 
-void GameFrame::process_prizes_on_timer(){ // КАДРЫ ПРИЗОВ
+void GameFrame::process_prizes_on_timer(){ // ОБНОВЛЕНИЯ ПРИЗОВ
     foreach( Prize* prz, this->game_frame_prizes )
     {
         bool prize_catched = false;

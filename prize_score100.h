@@ -15,8 +15,8 @@ protected slots:
 signals:
 
 public:
-    bool have_single_action();
-    void single_action();
+    bool have_action_single();
+    void action_single();
 };
 
 class Prize_Score100 : public Prize

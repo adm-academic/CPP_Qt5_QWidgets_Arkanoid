@@ -98,7 +98,7 @@ void GameState::decrement_lifes(){
 }
 
 void GameState::add_prize(Prize *prize){
-    device_prizes_list->add_prize(prize); // добавим приз в прибор отобажения призов
+    device_prizes_list->check_and_add_prize(prize); // добавим приз в прибор отобажения призов
 }
 
 
