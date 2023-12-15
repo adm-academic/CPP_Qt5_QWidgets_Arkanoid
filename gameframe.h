@@ -32,6 +32,7 @@ public:
     void unload_game_scene(); // выгружает сцену арканоида из фрейма
     QVector <QVector <Block*> > get_blocks_vector(); // возвращает вектор блоков
     int  get_blocks_count(); // возвращает количество блоков на экране
+    void check_blocks_are_over(); // проверяет кол-во блоков на экране и завершает уровень...
     void process_level_finished(); // проверяет закончен уровень и переходит к следующему
                                              // все летящие призы на уровне исчезают
     void reinitialize_blocks_vector_size(int cols_x, int rows_y); // пересоздаём вектор, хранящий блоки
@@ -44,7 +45,6 @@ public:
                                              // фоновую картинку из указанного файла
     void set_neutral_background(); // устанавливает нейтральный фон
     void clear_blocks(); // очищает блоки и удаляет их с экрана
-
 
 private:
 
@@ -70,7 +70,8 @@ private:
 
 
 protected slots:
-    void process_prizes_on_timer();
+    void slot_process_prizes_on_timer();
+
 
 protected:
     void paintEvent( QPaintEvent *event );

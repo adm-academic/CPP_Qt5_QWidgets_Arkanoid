@@ -4,6 +4,7 @@
 
 #include <QWidget>
 #include <QImage>
+#include <QPoint>
 
 
 
@@ -18,6 +19,7 @@ public:
     void platform_go_left(); // переместить платформу влево
     void platform_go_right();// переместить платформу вправо
     int  get_platform_top();// получить верх платформы
+    QPoint get_platform_center_top();
 
     int  get_width(); // получить ширину платфомы
     void set_width(int value); // установить ширину платформы
@@ -25,7 +27,8 @@ public:
     QImage* get_image(); // получить текущую картинку платфомы
     void    set_image(QImage* img); // установить новую картинку платфомы
 
-    void process_platform_states(); // здесь обрабатываются призы и состояния платформы
+    void process_platform_states(); //!!!!!!!!!!!!!!!!!!!
+                                    // здесь обрабатываются призы и состояния платформы
                                     // вызываются ИЗ ТАЙМЕРА МЯЧА.
 
 protected:

@@ -49,7 +49,6 @@ void WScoreStatistic::show_all_results(){
       QString high_score = query.value(1).toString();
       QString win_score  = query.value(2).toString();
       query_row_counts++;
-      qDebug() << "#######" << gamer_name << ",HS:" << high_score << ",WS:"  << win_score ;
     };
 
     // установим верхние заголовки таблицы

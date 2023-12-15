@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.2, 2023-12-13T10:41:36. -->
+<!-- Written by QtCreator 7.0.2, 2023-12-13T17:43:59. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -251,7 +251,7 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/run/media/dmitryalexeev/Datas/PROJECTS/Arkanoid/build-CPP_Qt5_QWidgets_Arkanoid-Desktop-Profile</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/run/media/dmitryalexeev/Datas/PROJECTS/Arkanoid/build-CPP_Qt5_QWidgets_Arkanoid-Desktop-Debug</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

@@ -1,5 +1,6 @@
 #include "global_forms.h"
 #include "device_prizes_list.h"
+#include "arkanoid_state.h"
 
 
 Device_Prizes_List::Device_Prizes_List(QWidget *parent)
@@ -151,4 +152,20 @@ bool Device_Prizes_List::alreay_contains_similar_prize(Prize* prize){
     };
     // возвращаем флаг. он содержит то, что нужно.
     return found;
+}
+
+void Device_Prizes_List::prize_states_action_update()
+{
+    foreach (Prize* prize_item, this->active_prizes)
+    {
+        prize_item->get_arkanoid_state()->action_update();
+    };
+}
+
+void Device_Prizes_List::prize_states_action_repaint()
+{
+    foreach (Prize* prize_item, this->active_prizes)
+    {
+        prize_item->get_arkanoid_state()->action_repaint();
+    };
 }

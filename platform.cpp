@@ -20,6 +20,14 @@ int Platform::get_platform_top(){
     return gameframe->height() - ( this->platform_height + this->hover );
 }
 
+QPoint Platform::get_platform_center_top()
+{
+    QPoint result;
+    result.setX( this->x() + ( this->width() / 2 ) );
+    result.setY( this->y() );
+    return result;
+}
+
 void Platform::set_platform_pos(int position){
     if ( position<0 )
     {
@@ -78,5 +86,5 @@ void    Platform::set_image(QImage* img){
 
 void Platform::process_platform_states()
 {
-    qDebug() << "!!!!!!!!!!!!!!!!!!" << " PROCESS PLATFORM STATES";
+    // qDebug() << "!!!!!!!!!!!!!!!!!!" << " PROCESS PLATFORM STATES";
 }

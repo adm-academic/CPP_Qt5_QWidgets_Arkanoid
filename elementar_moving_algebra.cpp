@@ -118,3 +118,34 @@ bool between( int value, int low_param, int high_param ){
         return false;
     };
 }
+
+bool is_rects_collision(QWidget* wdg1, QWidget* wdg2)
+{
+    bool CollisionX=false;
+    bool CollisionY=false;
+
+    if ((wdg1->x() + wdg1->width() >= wdg2->x()) and (wdg1->x() <= wdg2->x() + wdg2->width()))
+        CollisionX = true;
+    if ((wdg1->y() + wdg1->height() >= wdg2->y()) and (wdg1->y() <= wdg2->y() + wdg2->height()))
+        CollisionY = true;
+
+    if ( CollisionX and CollisionY )
+        return true;
+
+    return false;
+}
+
+bool is_rects_collision(QRect* rect1, QRect* rect2){
+    bool CollisionX=false;
+    bool CollisionY=false;
+
+    if ((rect1->x() + rect1->width() >= rect2->x()) and (rect1->x() <= rect2->x() + rect2->width()))
+        CollisionX = true;
+    if ((rect1->y() + rect1->height() >= rect2->y()) and (rect1->y() <= rect2->y() + rect2->height()))
+        CollisionY = true;
+
+    if ( CollisionX and CollisionY )
+        return true;
+
+    return false;
+}

@@ -19,6 +19,7 @@ WMain::WMain(QWidget *parent)
 {
     ui->setupUi(this);
     this->setMouseTracking(true); // команда отслеживать мышь
+    this->setFixedSize(1024,684); // окно будет фиксированного размера
 
     // проинициализируем указатели на самые важные элементы интерфейса
     gameframe=this->ui->fr_game; // на игровой фрейм
