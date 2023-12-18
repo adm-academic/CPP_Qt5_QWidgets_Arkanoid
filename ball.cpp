@@ -128,7 +128,11 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
                                  );
     int bottom_coordinate_value = this->y() + this->height(); // нижняя координата шарика
     if ( is_rects_collision(&ball_rect,&platform_rect) ){// если шарик столкнулся с платформой
-
+        QRect lpr = gameframe->get_platform()->get_platform_left_zone_rect();
+        QRect rpr = gameframe->get_platform()->get_platform_right_zone_rect();
+        if  ( ( is_rects_collision(&ball_rect,&lpr) ) or
+              ( is_rects_collision(&ball_rect,&rpr) ) )
+            this->ball_angle += 20; // грязный хак, НАДО ВСЁ ПЕРЕПИСЫВАТЬ К ЧЁРТОВОЙ МАТЕРИ !!!
         gamestate->sound_play_ball_with_platform();
         if ( this->ball_must_be_caught ){ // если мяч должен быть пойман
             this->ball_landing();

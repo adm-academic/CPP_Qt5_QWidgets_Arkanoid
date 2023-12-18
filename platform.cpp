@@ -94,16 +94,16 @@ QRect Platform::get_platform_full_rect()
 QRect Platform::get_platform_left_zone_rect()
 {
     return QRect( this->x(), this->y(),
-                  this->width() / 4,
+                  this->width() / 5,
                   this->height()
                 );
 }
 
 QRect Platform::get_platform_right_zone_rect()
 {
-    return QRect( this->x()+this->width() - (this->width() / 4),
+    return QRect( this->x()+this->width() - (this->width() / 5),
                   this->y(),
-                  this->width() / 4,
+                  this->width() / 5,
                   this->height()
                 );
 }
