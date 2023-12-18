@@ -4,22 +4,40 @@
 Prize_Slow::Prize_Slow(QWidget *parent)
     : Prize{parent}{
     this->image.load("images/prize_slow.png");
+    this->arkanoid_state = new State_Prize_Slow();
+
+    this->antagonists_classnames << "Prize_Fast";
 }
 
 bool Prize_Slow::with_expiration_time(){
     return true;
 }
 
-QString Prize_Slow::get_class_id(){
-    return "Slow";
+
+//----------------------------------------------------------------------------------
+
+bool State_Prize_Slow::have_action_single()
+{
+    return false;
 }
 
-void Prize_Slow::expand_game_mechanics(){
+void State_Prize_Slow::action_enter()
+{
     this->saved_deltha = gameframe->get_ball()->get_default_deltha();
     gameframe->get_ball()->set_deltha( this->saved_deltha / 2 );
 }
 
-void Prize_Slow::revert_game_mechanics(){
-    gameframe->get_ball()->set_deltha( this->saved_deltha );
+void State_Prize_Slow::action_update()
+{
+    
 }
 
+void State_Prize_Slow::action_repaint()
+{
+    
+}
+
+void State_Prize_Slow::action_exit()
+{
+    gameframe->get_ball()->set_deltha( this->saved_deltha );
+}

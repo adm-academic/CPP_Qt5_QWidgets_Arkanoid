@@ -49,6 +49,8 @@ private slots:
 
     void on_actionWins_Statistic_triggered();
 
+    void on_actionAbout_Qt_triggered();
+
 private:
     Ui::WMain *ui;
 };

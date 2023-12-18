@@ -20,6 +20,14 @@ int Platform::get_platform_top(){
     return gameframe->height() - ( this->platform_height + this->hover );
 }
 
+QPoint Platform::get_platform_center_top()
+{
+    QPoint result;
+    result.setX( this->x() + ( this->width() / 2 ) );
+    result.setY( this->y() );
+    return result;
+}
+
 void Platform::set_platform_pos(int position){
     if ( position<0 )
     {
@@ -74,4 +82,28 @@ QImage* Platform::get_image(){
 
 void    Platform::set_image(QImage* img){
     this->image = img;
+}
+
+QRect Platform::get_platform_full_rect()
+{
+    return QRect( this->x(), this->y(),
+                  this->width(), this->height()
+                );
+}
+
+QRect Platform::get_platform_left_zone_rect()
+{
+    return QRect( this->x(), this->y(),
+                  this->width() / 5,
+                  this->height()
+                );
+}
+
+QRect Platform::get_platform_right_zone_rect()
+{
+    return QRect( this->x()+this->width() - (this->width() / 5),
+                  this->y(),
+                  this->width() / 5,
+                  this->height()
+                );
 }

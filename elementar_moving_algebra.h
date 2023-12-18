@@ -1,6 +1,8 @@
-// функции для просчёта движения
+// разная алгебра и математика
 #ifndef ELEMENTAR_MOVING_ALGEBRA_H
 #define ELEMENTAR_MOVING_ALGEBRA_H
+#include <QWidget>
+#include <QRect>
 
 // дробные полярные координаты
 struct plane_polar_coorinate_f{
@@ -30,12 +32,16 @@ enum class Barrier_Type{ // тип препятсвия при столкнов�
     barrier_left,
     barrier_bottom,
     barrier_right,
-    // ... ещё нужны типы для 90 градусов и для уголков
+    ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    ///... ещё нужны типы для 90 градусов и для уголков
 };
 
 int get_angle_mirror(int angle, Barrier_Type barrier_type); // возвращает новый угол при столкновении с препятствием
 
 bool between( int value, int low_param, int high_param ); // возвращает истину если значение value
             // лежит в промежутке между low_param и high_param
+
+bool is_rects_collision(QWidget* wdg1, QWidget* wdg2);
+bool is_rects_collision(QRect* rect1, QRect* rect2);
 
 #endif // ELEMENTAR_MOVING_ALGEBRA_H

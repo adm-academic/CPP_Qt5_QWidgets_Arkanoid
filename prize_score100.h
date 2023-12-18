@@ -4,6 +4,20 @@
 #include "prize.h"
 #include <QObject>
 #include <QWidget>
+#include "arkanoid_state.h"
+
+// Шаблон "State"...
+class State_Prize_Score100 : public Arkanoid_State{
+    Q_OBJECT
+
+protected:
+protected slots:
+signals:
+
+public:
+    bool have_action_single();
+    void action_single();
+};
 
 class Prize_Score100 : public Prize
 {
@@ -12,9 +26,7 @@ public:
     Prize_Score100(QWidget *parent = nullptr);
 
     bool with_expiration_time(); // истина если объект поддерживает таймаут действия
-    QString get_class_id(); // возвращает текстовый идентификатор класса
 
-    void single_action_of_a_prize();// Добавляет приз в игру, к примеру жизнь или очки
 
 };
 

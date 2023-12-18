@@ -3,6 +3,8 @@
 #define PRIZE_H
 
 #include <QWidget>
+#include <QList>
+#include "arkanoid_state.h"
 
 
 class Prize : public QWidget
@@ -10,6 +12,7 @@ class Prize : public QWidget
     Q_OBJECT
 public:
     explicit Prize(QWidget *parent = nullptr );
+    virtual  ~Prize();
 
     virtual void  set_timeout_seconds(uint timeout_value); // устанавливает
                         // таймаут жизни для объекта приза
@@ -23,12 +26,13 @@ public:
     virtual bool get_drawing_progress(); // получаем настройку отрисовки прогрессбара
 
     virtual bool with_expiration_time(); // истина если объект поддерживает таймаут действия
-    virtual QString get_class_id(); // возвращает текстовый идентификато класса
+    virtual QString get_class_name(); // возвращает текстовый идентификатор класса
 
-    virtual void expand_game_mechanics();// Расширяет игровую механику
-    virtual void revert_game_mechanics();// Возвращает  назад игровую механику
-    virtual void single_action_of_a_prize();// Один раз вносит модификацию  игру
+    virtual Arkanoid_State* get_arkanoid_state();
 
+    QList<QString> antagonists_classnames; // хранит список имён классов объектов-антагонистов к текущему.
+                                           // это нужно для удаления всех несовместимых (антогонистов)
+                                           // объектов когда пойман новый приз
 
 protected:
 
@@ -43,6 +47,8 @@ protected:
 
     void paintEvent(QPaintEvent *event); // метод в котором мы отрисовываем виджет
     virtual void draw_progress(QPainter &painter); // метод в котором мы отрисовываем прогрессбар
+
+    Arkanoid_State* arkanoid_state = nullptr; // хранит шаблонный объект-состояние или его наследников
 
 signals:
 };

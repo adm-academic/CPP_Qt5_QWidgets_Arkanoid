@@ -12,7 +12,12 @@ Prize::Prize(QWidget *parent)
     this->show();
 }
 
-
+Prize::~Prize(){
+    if ( this->arkanoid_state == nullptr )
+        return;
+    delete this->arkanoid_state;
+    this->arkanoid_state = nullptr;
+}
 
 void Prize::set_timeout_seconds(uint timeout_value){
     this->timeout_seconds = timeout_value;
@@ -92,18 +97,15 @@ bool Prize::with_expiration_time(){
     return true;
 }
 
-QString Prize::get_class_id(){
-    return "Abstract";
-}
-
-void Prize::expand_game_mechanics(){//по умолчанию приз не оказывает никакого дейстия на игру
+QString Prize::get_class_name(){
+    return this->metaObject()->className();
 
 }
 
-void Prize::revert_game_mechanics(){//по умолчанию приз не оказывает никакого дейстия на игру
 
+Arkanoid_State* Prize::get_arkanoid_state()
+{
+    return this->arkanoid_state;
 }
 
-void Prize::single_action_of_a_prize(){//по умолчанию приз не оказывает никакого дейстия на игру
 
-}

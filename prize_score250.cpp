@@ -5,6 +5,7 @@ Prize_Score250::Prize_Score250(QWidget *parent)
     : Prize{parent}
 {
     this->image.load("images/prize_score_250.png");
+    this->arkanoid_state = new State_Prize_Score250;
 }
 
 
@@ -12,10 +13,14 @@ bool Prize_Score250::with_expiration_time(){
     return false;
 }
 
-QString Prize_Score250::get_class_id(){
-    return "Score250";
+//----------------------------------------------------------------------------------
+
+bool State_Prize_Score250::have_action_single()
+{
+    return true;
 }
 
-void Prize_Score250::single_action_of_a_prize(){
+void State_Prize_Score250::action_single()
+{
     gamestate->add_score( 250 );
 }

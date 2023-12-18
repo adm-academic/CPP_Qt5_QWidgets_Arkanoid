@@ -9,6 +9,7 @@ Prize_Life::Prize_Life(QWidget *parent)
     : Prize{parent}
 {
     this->image.load("images/prize_life.png");
+    this->arkanoid_state = new State_Prize_Life();
 }
 
 
@@ -16,10 +17,13 @@ bool Prize_Life::with_expiration_time(){
     return false;
 }
 
-QString Prize_Life::get_class_id(){
-    return "Life";
+//----------------------------------------------------------------------------------
+bool State_Prize_Life::have_action_single()
+{
+    return true;
 }
 
-void Prize_Life::single_action_of_a_prize(){
+void State_Prize_Life::action_single()
+{
     gamestate->add_lifes( 1 );
 }

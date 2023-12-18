@@ -10,6 +10,7 @@
 Prize_Expand::Prize_Expand(QWidget *parent)
     : Prize{parent}{
     this->image.load("images/prize_expand.png");
+    this->arkanoid_state = new State_Prize_Expand();
 }
 
 
@@ -17,11 +18,15 @@ bool Prize_Expand::with_expiration_time(){
     return true;
 }
 
-QString Prize_Expand::get_class_id(){
-    return "Expand";
+//----------------------------------------------------------------------------------
+
+bool State_Prize_Expand::have_action_single()
+{
+    return false;
 }
 
-void Prize_Expand::expand_game_mechanics(){
+void State_Prize_Expand::action_enter()
+{
     this->stored_width = gameframe->get_platform()->get_width();
     gameframe->get_platform()->set_width( gameframe->get_platform()->get_width() * 2 );
 
@@ -31,15 +36,22 @@ void Prize_Expand::expand_game_mechanics(){
     gameframe->get_platform()->set_image( this->stored_prize_image );
 }
 
-void Prize_Expand::revert_game_mechanics(){
+void State_Prize_Expand::action_update()
+{
+    
+}
+
+void State_Prize_Expand::action_repaint()
+{
+    
+}
+
+void State_Prize_Expand::action_exit()
+{
     gameframe->get_platform()->set_width( this->stored_width );
     gameframe->get_platform()->set_image( this->stored_original_image );
     if ( this->stored_prize_image != nullptr ){
         delete this->stored_prize_image;
         this->stored_prize_image = nullptr;
     };
-}
-
-void Prize_Expand::single_action_of_a_prize(){
-
 }

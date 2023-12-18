@@ -98,7 +98,17 @@ void GameState::decrement_lifes(){
 }
 
 void GameState::add_prize(Prize *prize){
-    device_prizes_list->add_prize(prize); // добавим приз в прибор отобажения призов
+    device_prizes_list->check_and_add_prize(prize); // добавим приз в прибор отобажения призов
+}
+
+void GameState::prize_states_action_update()
+{
+    this->device_prizes_list->prize_states_action_update();
+}
+
+void GameState::prize_states_action_repaint()
+{
+    this->device_prizes_list->prize_states_action_repaint();
 }
 
 
@@ -141,6 +151,7 @@ void GameState::game_over(){
 }
 
 void GameState::start_next_level(){
+    this->device_prizes_list->clear_prizes();
     if ( this->get_level() == this->get_level_loader()->get_last_level_index() ){
         this->game_win();
     }
@@ -205,9 +216,29 @@ void GameState::sound_play_game_over(){
 }
 
 void GameState::sound_play_game_win(){
-    sound_play_from_qmap("game_over","sounds/game_is_won.wav");
+    sound_play_from_qmap("game_win","sounds/game_is_won.wav");
 }
 
 void GameState::sound_play_level_win(){
-    sound_play_from_qmap("game_over","sounds/level_win.wav");
+    sound_play_from_qmap("level_win","sounds/level_win.wav");
+}
+
+void GameState::sound_play_shoot_hit()
+{
+    sound_play_from_qmap("shoot_hit","sounds/shoot_hit.wav");
+}
+
+void GameState::sound_play_shoot_laser()
+{
+    sound_play_from_qmap("shoot_laser","sounds/shoot_laser.wav");
+}
+
+void GameState::sound_play_rocket_launch()
+{
+    sound_play_from_qmap("shoot_laser","sounds/rocket_launch.wav");
+}
+
+void GameState::sound_play_rocket_explosion()
+{
+    sound_play_from_qmap("shoot_laser","sounds/rocket_explosion.wav");
 }

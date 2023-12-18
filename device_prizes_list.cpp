@@ -1,5 +1,6 @@
 #include "global_forms.h"
 #include "device_prizes_list.h"
+#include "arkanoid_state.h"
 
 
 Device_Prizes_List::Device_Prizes_List(QWidget *parent)
@@ -30,7 +31,8 @@ void Device_Prizes_List::slot_prizes_timer(){
             this->active_prizes.removeAt(
             this->active_prizes.indexOf( prize_item ) );// теперь удалим ссылку на
                                    // объект приза из списка где он хранился
-            prize_item->revert_game_mechanics(); // вызовем код уборки действия приза
+            prize_item->get_arkanoid_state()->action_exit();///!!!!!!!!!!!
+                                                 // вызовем код уборки действия приза
                                                  // вернём назад игровую механику
             delete prize_item; // удалим объект приза чтобы не убегала память
             this->arrange_and_show_prizes();     // если был удалён хотя-бы
@@ -72,18 +74,35 @@ void Device_Prizes_List::arrange_and_show_prizes(){ // отображает сп
     }
 }
 
-void Device_Prizes_List::add_prize(Prize* prize){
+void Device_Prizes_List::check_and_add_prize(Prize* prize){
     if ( this->active_prizes.contains(prize) ) return; // если прибор уже содержит
                                                        // этот объект приза то просто
                                                        // выходим из метода
     if ( ! prize->with_expiration_time() ){
         // если этот приз не поддерживает истечение срока действия то удалим его объект
         // и выйдем из метода
-        prize->single_action_of_a_prize(); // вызовем единичный обработчик для этого приза
+        prize->get_arkanoid_state()->action_single(); // вызовем единичный обработчик для этого приза
         prize->hide(); // скроем приз
         delete prize; // удалим приз
         return; // выйдем из метода
     };
+
+    // Удалим из прибора всех антагонистов переданного приза используя рефлексию Qt
+    foreach (Prize* prize_item_in_device, this->active_prizes)
+    {
+        foreach ( QString antagonist_name, prize->antagonists_classnames ){
+            if ( prize_item_in_device->metaObject()->className() == antagonist_name ){
+                this->active_prizes.removeAt(
+                this->active_prizes.indexOf( prize_item_in_device ) );// удалим ссылку на объект
+                                                        //приза-антагониста из списка где он хранился
+                prize_item_in_device->get_arkanoid_state()->action_exit();///!!!!!!!!!!!
+                                                              // вызовем код уборки действия приза
+                                                              // вернём назад игровую механику
+                delete prize_item_in_device; // удалим сам объект приза-антагониста
+            };
+        };
+    };
+
 
     // поищем такой-же приз в приборе
     // если прибор уже содержит объект этого класса - то выставляем флаг
@@ -91,7 +110,7 @@ void Device_Prizes_List::add_prize(Prize* prize){
     bool found = false;
     foreach (Prize* prize_item, this->active_prizes)
     {
-        if ( prize_item->get_class_id() == prize->get_class_id() ){
+        if ( prize_item->get_class_name() == prize->get_class_name() ){
             found = true;
             prize_item->reset_timeout();
             break;
@@ -106,8 +125,8 @@ void Device_Prizes_List::add_prize(Prize* prize){
         prize->setParent(this); // добавляем приз в прибор
         this->active_prizes.append(prize); // добавим приз в список призов
         this->arrange_and_show_prizes(); // перестроим и отобразим весь список виджетов
-        prize->expand_game_mechanics(); // расширим игровую механику с помощью
-                                        // этого приза
+        prize->get_arkanoid_state()->action_enter(); // !!!!! расширим игровую механику с помощью
+                                                     // этого приза
     };
 }
 
@@ -122,15 +141,31 @@ void Device_Prizes_List::clear_prizes(){
 
 bool Device_Prizes_List::alreay_contains_similar_prize(Prize* prize){
     // поищем такой-же приз в приборе
-    // если прибор уже содержит объект этого класса - то выставляем флагbool found = false;
+    // если прибор уже содержит объект этого класса - то выставляем флаг bool found = false;
     bool found = false;
     foreach (Prize* prize_item, this->active_prizes)
     {
-        if ( prize_item->get_class_id() == prize->get_class_id() ){
+        if ( prize_item->get_class_name() == prize->get_class_name() ){
             found = true;
             break;
         }
     };
     // возвращаем флаг. он содержит то, что нужно.
     return found;
+}
+
+void Device_Prizes_List::prize_states_action_update()
+{
+    foreach (Prize* prize_item, this->active_prizes)
+    {
+        prize_item->get_arkanoid_state()->action_update();
+    };
+}
+
+void Device_Prizes_List::prize_states_action_repaint()
+{
+    foreach (Prize* prize_item, this->active_prizes)
+    {
+        prize_item->get_arkanoid_state()->action_repaint();
+    };
 }

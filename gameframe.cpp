@@ -15,8 +15,12 @@
 #include "prize_score500.h"
 #include "prize_slow.h"
 #include "prize_fast.h"
+#include "prize_laser.h"
+#include "prize_rocket.h"
 #include "global_forms.h"
 #include "global_widgets.h"
+#include "shoot.h"
+#include "rocket.h"
 
 
 GameFrame::GameFrame(QWidget *parent): QFrame{parent}
@@ -27,7 +31,7 @@ GameFrame::GameFrame(QWidget *parent): QFrame{parent}
     this->set_neutral_background(); // устаноим нейтральный фон
 
     connect( &this->game_timer, SIGNAL(timeout()), \
-             this,SLOT(process_prizes_on_timer()) ); // назначим таймер на обработчик падающих призов
+             this,SLOT(slot_process_prizes_on_timer()) ); // назначим таймер на обработчик падающих призов
 }
 
 
@@ -198,7 +202,7 @@ void GameFrame::load_game_scene(){ // загружает игровую сцен
 }
 
 int  GameFrame::get_blocks_count(){
-    int block_left = 0; // здесь храним количество оставшихся блоков
+    int block_left = 0; // здесь количество оставшихся блоков
     for (int i=0;i<this->blocks_pointers.count();i++){
             for (int j=0;j<this->blocks_pointers[i].count();j++){
                if (this->blocks_pointers[i][j] != nullptr){
@@ -264,9 +268,14 @@ void GameFrame::mouseMoveEvent(QMouseEvent *event)
 void GameFrame::mousePressEvent(QMouseEvent *event)
 {
     if ( !this->scene_loaded ) return; // если сцена не загружена то выходим из метода
-    if ( event->button()==Qt::LeftButton ){
-        this->ball->ball_flying_start(); // переключить шарик в режим полёта
-        this->game_timer.start(); // включить игровой таймер
+    if ( event->button()==Qt::LeftButton ){ // если нажата левая кнопка мыши
+        if ( !this->ball->is_flying() ){ // если шарик не летит
+            this->ball->ball_flying_start(); // переключить шарик в режим полёта
+            this->game_timer.start(); // включить игровой таймер
+        }
+    }
+    if ( event->button() == Qt::RightButton){
+        gamestate->prize_states_action_update();
     }
 }
 
@@ -280,36 +289,10 @@ void GameFrame::paintEvent(QPaintEvent *event){
                        this->background_image.height()) \
                        );
 
-
-    this->paint_frame();
-//    // рисуем фон игрового виджета
-//    QBrush brush;
-//    QColor bk_color = QColor(10,10,50,255);
-//    brush.setColor(bk_color);
-//    brush.setStyle(Qt::SolidPattern);
-//    painter.setBrush(brush);
-//    painter.drawRect( 0,0, this->width(), this->height()  );
-
-//    // рисуем звёзды на игровом виджете
-//    QPen pen;
-//    QColor stars_color = QColor(255,255,255,255);
-//    pen.setColor(stars_color);
-//    pen.setStyle(Qt::SolidLine);
-//    pen.setWidth(1);
-//    painter.setPen(pen);
-//    for (int i=0; i<this->stars.count(); i++ ){
-//        painter.drawEllipse( this->stars[i], 3, 3 );
-//        painter.drawEllipse( this->stars[i], 2, 2 );
-//        painter.drawEllipse( this->stars[i], 1, 1 );
-
-//        int x = this->stars[i].x();
-//        int y = this->stars[i].y();
-//        painter.drawLine( x-5,y,  x+5,y   );
-//        painter.drawLine( x,  y-5,x,  y+5 ) ;
-//    }
+    this->paint_bounding_game_frame();
 }
 
-void GameFrame::paint_frame() {
+void GameFrame::paint_bounding_game_frame() {
     const int pen_width = 2;
     const int frame_width = 5;
     QPainter painter(this);
@@ -330,69 +313,103 @@ void GameFrame::paint_frame() {
 }
 
 void GameFrame::create_random_prize_at(int x, int y){
-    int random_prize_creation = QRandomGenerator::global()->bounded( 1, 3+1 );
-    if ( random_prize_creation ==1 ) return; // обеспечиваем редкое выпадение призов
+    int random_prize_creation = QRandomGenerator::global()->bounded( 1, 1+1 );
+    if ( random_prize_creation !=1 ) return; // выпадение призов не ограничено!
 
-    int prizes_classes_count = 9;
-    int random_prize_selector = QRandomGenerator::global()->bounded( 1,
-                                                prizes_classes_count + 1  ); // значение
-                                               // селектора для выбора рандомного приза
-    Prize* prz = nullptr;
-    if     ( random_prize_selector==1 ){
-        prz = new Prize_Catch(this);
-        game_frame_prizes.append( prz );
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==2 ){
-        prz = new Prize_Expand(this);
-        game_frame_prizes.append( prz );
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==3 ){
-        prz = new Prize_Life(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==4 ){
-        prz = new Prize_Score50(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==5 ){
-        prz = new Prize_Score100(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==6 ){
-        prz = new Prize_Score250(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==7 ){
-        prz = new Prize_Score500(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==8 ){
-        prz = new Prize_Slow(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
-    }
-    else if ( random_prize_selector==9 ){
-        prz = new Prize_Fast(this);
-        game_frame_prizes.append(prz);
-        prz->move(x,y);
-        prz->show();
+    while(true){
+        int prizes_classes_count = 11;
+        int random_prize_selector = QRandomGenerator::global()->bounded( 1,
+                                                    prizes_classes_count + 1  ); // значение
+                                                   // селектора для выбора рандомного приза
+        Prize* prz = nullptr;
+        if     ( random_prize_selector==1 ){
+            prz = new Prize_Catch(this);
+            game_frame_prizes.append( prz );
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==2 ){
+            prz = new Prize_Expand(this);
+            game_frame_prizes.append( prz );
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==3 ){
+            prz = new Prize_Life(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==4 ){
+            prz = new Prize_Score50(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==5 ){
+            prz = new Prize_Score100(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==6 ){
+            prz = new Prize_Score250(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==7 ){
+            prz = new Prize_Score500(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==8 ){
+            prz = new Prize_Slow(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==9 ){
+            prz = new Prize_Fast(this);
+            game_frame_prizes.append(prz);
+            prz->move(x,y);
+            prz->show();
+            break;
+        }
+        else if ( random_prize_selector==10 ){
+            int probability = QRandomGenerator::global()->bounded( 1,3+1 ); // вероятность ниже в три раза
+            if (probability==1){
+                prz = new Prize_Laser(this);
+                game_frame_prizes.append(prz);
+                prz->move(x,y);
+                prz->show();
+                break;
+            }
+            else
+                continue;
+        }
+        else if ( random_prize_selector==11 ){
+            int probability = QRandomGenerator::global()->bounded( 1, 5+1 ); // вероятность ниже в пять раз
+            if (probability==1){
+                prz = new Prize_Rocket(this);
+                game_frame_prizes.append(prz);
+                prz->move(x,y);
+                prz->show();
+                break;
+            }
+            else
+                continue;
+        };
     };
-
 
 }
 
@@ -407,7 +424,7 @@ void GameFrame::delete_all_flying_prizes(){
     };
 }
 
-void GameFrame::process_prizes_on_timer(){
+void GameFrame::slot_process_prizes_on_timer(){ // ОБНОВЛЕНИЯ ПРИЗОВ
     foreach( Prize* prz, this->game_frame_prizes )
     {
         bool prize_catched = false;
@@ -446,6 +463,16 @@ void GameFrame::process_prizes_on_timer(){
             prz->hide();
             delete prz; // удалим объект приза чтобы не убегала память
         };
+    };
+}
+
+void GameFrame::check_blocks_are_over()
+{
+    if ( this->get_blocks_count()<=0 ){
+        this->ball->ball_landing();
+        this->process_level_finished();
+        gamestate->start_next_level();
+        return;
     };
 }
 

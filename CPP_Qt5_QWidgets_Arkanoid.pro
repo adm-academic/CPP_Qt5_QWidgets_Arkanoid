@@ -11,11 +11,13 @@ CONFIG += console
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arkanoid_state.cpp \
     ball.cpp \
     block.cpp \
     device_background.cpp \
     device_prizes_list.cpp \
     elementar_moving_algebra.cpp \
+    explosion.cpp \
     gameframe.cpp \
     gamestate.cpp \
     global_forms.cpp \
@@ -27,13 +29,17 @@ SOURCES += \
     prize_catch.cpp \
     prize_expand.cpp \
     prize_fast.cpp \
+    prize_laser.cpp \
     prize_life.cpp \
+    prize_rocket.cpp \
     prize_score100.cpp \
     prize_score250.cpp \
     prize_score50.cpp \
     prize_score500.cpp \
     prize_slow.cpp \
+    rocket.cpp \
     settings.cpp \
+    shoot.cpp \
     wabout.cpp \
     wgameover.cpp \
     wlanguage.cpp \
@@ -43,11 +49,13 @@ SOURCES += \
     wwin.cpp
 
 HEADERS += \
+    arkanoid_state.h \
     ball.h \
     block.h \
     device_background.h \
     device_prizes_list.h \
     elementar_moving_algebra.h \
+    explosion.h \
     gameframe.h \
     gamestate.h \
     global_forms.h \
@@ -58,13 +66,17 @@ HEADERS += \
     prize_catch.h \
     prize_expand.h \
     prize_fast.h \
+    prize_laser.h \
     prize_life.h \
+    prize_rocket.h \
     prize_score100.h \
     prize_score250.h \
     prize_score50.h \
     prize_score500.h \
     prize_slow.h \
+    rocket.h \
     settings.h \
+    shoot.h \
     wabout.h \
     wgameover.h \
     wlanguage.h \

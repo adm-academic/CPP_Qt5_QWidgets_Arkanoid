@@ -47,6 +47,11 @@ public:
     void decrement_lifes(); // уменьшает количество жизней
 
     void add_prize(Prize* prize);  // добавляет приз на экран прибора призов
+    ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    void prize_states_action_update(); // вызов метода "обновление" всех пойманых призов...
+    void prize_states_action_repaint(); // вызов метода "перерисовка" всех пойманых призов...
+    ///! здесь нужно как-то придумать как передавать пользовательский ввод в эти методы
+    ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     void reset_devices(); // обнуляет приборы
 
@@ -67,6 +72,10 @@ public:
     void sound_play_game_over();
     void sound_play_game_win();
     void sound_play_level_win();
+    void sound_play_shoot_hit();
+    void sound_play_shoot_laser();
+    void sound_play_rocket_launch();
+    void sound_play_rocket_explosion();
     //-------------------------------------------------------------------
 
 protected:

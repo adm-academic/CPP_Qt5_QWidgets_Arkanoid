@@ -13,9 +13,11 @@ class Device_Prizes_List : public Device_Background
     Q_OBJECT
 public:
     explicit Device_Prizes_List(QWidget *parent = nullptr);
-    void     add_prize(Prize* prize); // добавляет приз в прибор отображения.
+    void     check_and_add_prize(Prize* prize); // добавляет приз в прибор отображения.
     void     clear_prizes(); // очищаем экран с активными призами
     bool     alreay_contains_similar_prize(Prize* prize);// истина если приз уже содержится в приборе
+    void prize_states_action_update(); // вызов метода "обновление" всех пойманых призов...
+    void prize_states_action_repaint(); // вызов метода "перерисовка" всех пойманых призов...
 
 private:
     QList < Prize* > active_prizes; // список отобажаемых прибором объектов призов
