@@ -28,10 +28,6 @@ public:
     virtual bool with_expiration_time(); // истина если объект поддерживает таймаут действия
     virtual QString get_class_name(); // возвращает текстовый идентификатор класса
 
-    virtual void expand_game_mechanics();// Расширяет игровую механику
-    virtual void revert_game_mechanics();// Возвращает  назад игровую механику
-    virtual void single_action_of_a_prize();// Один раз вносит модификацию  игру
-
     virtual Arkanoid_State* get_arkanoid_state();
 
     QList<QString> antagonists_classnames; // хранит список имён классов объектов-антагонистов к текущему.

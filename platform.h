@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QImage>
 #include <QPoint>
+#include <QRect>
 
 
 
@@ -27,9 +28,9 @@ public:
     QImage* get_image(); // получить текущую картинку платфомы
     void    set_image(QImage* img); // установить новую картинку платфомы
 
-    void process_platform_states(); //!!!!!!!!!!!!!!!!!!!
-                                    // здесь обрабатываются призы и состояния платформы
-                                    // вызываются ИЗ ТАЙМЕРА МЯЧА.
+    QRect get_platform_full_rect(); // получить объект QRect для текущего положения платформы
+    QRect get_platform_left_zone_rect(); // получить объект QRect для левого края платформы
+    QRect get_platform_right_zone_rect(); // получить объект QRect для правого края платформы
 
 protected:
 
@@ -38,6 +39,8 @@ protected:
     int platform_height = 20; // высота платформы
     int platform_left = 0; // позиция платформы указывается её левым краем
     int platform_move_increment = 20; // приращение координат при движении платформы вправо-влево
+
+
 
     QImage* image = nullptr; // картинка платформы
 

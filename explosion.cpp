@@ -100,6 +100,7 @@ void Explosion::slot_animate_explosion()
                  this->current_frame.height());
     this->move( this->explosion_x_center - (this->width()/2),
                 this->explosion_y_center - (this->height()/2)  );
+    this->update();
 }
 
 

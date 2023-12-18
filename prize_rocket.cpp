@@ -33,7 +33,6 @@ void State_Prize_Rocket::action_enter()
 void State_Prize_Rocket::action_update()
 {   // при вызове action_update запускаем ракету, но не чаще одного раза в секунду...
     uint time_deltha = ( (time(NULL) * 1000) - this->rocket_launched_last_timestamp );
-    qDebug() << "###" << time_deltha;
     if ( time_deltha >= this->rockets_delay_milliseconds ){
         new Rocket( gameframe->get_platform()->get_platform_center_top().x(),
                     gameframe->get_platform()->get_platform_center_top().y(),

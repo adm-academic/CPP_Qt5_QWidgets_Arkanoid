@@ -84,7 +84,26 @@ void    Platform::set_image(QImage* img){
     this->image = img;
 }
 
-void Platform::process_platform_states()
+QRect Platform::get_platform_full_rect()
 {
-    // qDebug() << "!!!!!!!!!!!!!!!!!!" << " PROCESS PLATFORM STATES";
+    return QRect( this->x(), this->y(),
+                  this->width(), this->height()
+                );
+}
+
+QRect Platform::get_platform_left_zone_rect()
+{
+    return QRect( this->x(), this->y(),
+                  this->width() / 4,
+                  this->height()
+                );
+}
+
+QRect Platform::get_platform_right_zone_rect()
+{
+    return QRect( this->x()+this->width() - (this->width() / 4),
+                  this->y(),
+                  this->width() / 4,
+                  this->height()
+                );
 }

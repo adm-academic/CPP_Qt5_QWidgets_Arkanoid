@@ -102,17 +102,6 @@ QString Prize::get_class_name(){
 
 }
 
-void Prize::expand_game_mechanics(){//по умолчанию приз не оказывает никакого дейстия на игру
-
-}
-
-void Prize::revert_game_mechanics(){//по умолчанию приз не оказывает никакого дейстия на игру
-
-}
-
-void Prize::single_action_of_a_prize(){//по умолчанию приз не оказывает никакого дейстия на игру
-
-}
 
 Arkanoid_State* Prize::get_arkanoid_state()
 {

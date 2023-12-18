@@ -313,9 +313,8 @@ void GameFrame::paint_bounding_game_frame() {
 }
 
 void GameFrame::create_random_prize_at(int x, int y){
-    ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    int random_prize_creation = QRandomGenerator::global()->bounded( 1, 2+1 );
-    if ( random_prize_creation !=1 ) return; // обеспечиваем редкое выпадение призов
+    int random_prize_creation = QRandomGenerator::global()->bounded( 1, 1+1 );
+    if ( random_prize_creation !=1 ) return; // выпадение призов не ограничено!
 
     while(true){
         int prizes_classes_count = 11;
@@ -387,7 +386,7 @@ void GameFrame::create_random_prize_at(int x, int y){
             break;
         }
         else if ( random_prize_selector==10 ){
-            int probability = QRandomGenerator::global()->bounded( 1, 4+1 ); // вероятность ниже в четыре раза
+            int probability = QRandomGenerator::global()->bounded( 1,3+1 ); // вероятность ниже в три раза
             if (probability==1){
                 prz = new Prize_Laser(this);
                 game_frame_prizes.append(prz);
@@ -399,7 +398,7 @@ void GameFrame::create_random_prize_at(int x, int y){
                 continue;
         }
         else if ( random_prize_selector==11 ){
-            int probability = QRandomGenerator::global()->bounded( 1, 8+1 ); // вероятность ниже в восемь раз
+            int probability = QRandomGenerator::global()->bounded( 1, 5+1 ); // вероятность ниже в пять раз
             if (probability==1){
                 prz = new Prize_Rocket(this);
                 game_frame_prizes.append(prz);

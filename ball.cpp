@@ -64,7 +64,6 @@ void Ball::fly_to_next_position(){ // ОБНОВЛЕНИЯ ШАРИКА
                                    // Следующее положение шарика зависит от текущего положения,
                                    // deltha,угла и препятствий
     /// обрабатываем состояния платформы, которые зависят от пойманных призов...
-    gameframe->get_platform()->process_platform_states();
 
     if (!this->ball_is_flying) return; // если шарик сейчас не летит, то выходим из метода
 
@@ -121,29 +120,23 @@ void Ball::process_collisions(){ // обрабатываем столкнове�
 
 
     // обрабатываем столкновения с платформой на игровом поле
+    QRect ball_rect = QRect(this->x(), this->y(), this->width(), this->height() );
+    QRect platform_rect = QRect( gameframe->get_platform()->x(),
+                                 gameframe->get_platform()->y(),
+                                 gameframe->get_platform()->width(),
+                                 gameframe->get_platform()->height()
+                                 );
     int bottom_coordinate_value = this->y() + this->height(); // нижняя координата шарика
-    int platform_left_x = gameframe->get_platform()->x(); // левая координата платформы
-    int platform_right_x = gameframe->get_platform()->x() + \
-                           gameframe->get_platform()->width(); // правая координата платформы
-    int ball_left_x = this->x();
-    int ball_right_x = this->x() + this->width();
-    if ( bottom_coordinate_value >=  \
-         gameframe->get_platform()->get_platform_top() )
-       {// если шарик по координатам достиг верхнего края платфомы
-        if ( ( ball_left_x>platform_left_x and ball_left_x<platform_right_x  ) or \
-             ( ball_right_x>platform_left_x and ball_right_x<platform_right_x ) ){
-            // если шарик достиг платформы левым или правым краем
-            if ( this->ball_must_be_caught ){ // если мяч должен быть пойман
-                this->ball_landing();
-                gamestate->sound_play_ball_with_platform();
-            }else{ // если мячик не нужно ловить, значит нужно отбивать
-                this->ball_angle = get_angle_mirror( this->ball_angle, Barrier_Type::barrier_bottom );
-                this->move( this->x() , \
-                            bottom_coordinate_value - this->height()  ); // поставим виджет наверх платформы
+    if ( is_rects_collision(&ball_rect,&platform_rect) ){// если шарик столкнулся с платформой
 
-                gamestate->sound_play_ball_with_platform();
-                return;
-            }
+        gamestate->sound_play_ball_with_platform();
+        if ( this->ball_must_be_caught ){ // если мяч должен быть пойман
+            this->ball_landing();
+        }else{ // если мячик не нужно ловить, значит нужно отбивать
+            this->ball_angle = get_angle_mirror( this->ball_angle, Barrier_Type::barrier_bottom );
+            this->move( this->x() , \
+                        bottom_coordinate_value - this->height()  ); // поставим виджет наверх платформы
+            return;
         }
     };
 
