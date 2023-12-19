@@ -29,8 +29,6 @@ public:
     void    set_image(QImage* img); // установить новую картинку платфомы
 
     QRect get_platform_full_rect(); // получить объект QRect для текущего положения платформы
-    QRect get_platform_left_zone_rect(); // получить объект QRect для левого края платформы
-    QRect get_platform_right_zone_rect(); // получить объект QRect для правого края платформы
 
 protected:
 
