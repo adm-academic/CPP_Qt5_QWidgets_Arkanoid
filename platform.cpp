@@ -16,6 +16,13 @@ Platform::Platform(QWidget *parent)
     this->image = new QImage("images/platform.png");
 }
 
+Platform::~Platform()
+{
+    if (this->image!=nullptr){
+        delete this->image;
+    }
+}
+
 int Platform::get_platform_top(){
     return gameframe->height() - ( this->platform_height + this->hover );
 }

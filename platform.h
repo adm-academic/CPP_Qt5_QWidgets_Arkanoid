@@ -14,6 +14,7 @@ class Platform : public QWidget
     Q_OBJECT
 public:
     explicit Platform(QWidget *parent = nullptr);
+    virtual ~Platform();
 
     void set_platform_pos(int position); // указываем позицию платформы в числах.
                                          // позиция автоматически корректируется
